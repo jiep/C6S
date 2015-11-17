@@ -49,6 +49,10 @@
 \thispagestyle{empty}
 \newpage
 
+\listoftables
+\thispagestyle{empty}
+\newpage
+
 \tableofcontents
 \thispagestyle{empty}
 \newpage
@@ -58,6 +62,98 @@
 \setcounter{page}{1}
 
 \section{Definición}
+
+La empresa Parasafe S.A. se dedica al diseño, producción y venta de helicópteros de papel.\\
+
+Estos helicópteros se utilizan para realizar estudios de aerodinámica en diseño de túneles de viento, separadores ciclónicos y sistemas de ventilación especiales.\\
+
+El proceso de fabricación de estos helicópteros consta de cuatro etapas básicas: el aprovisionamiento de materia prima, el montaje, la prueba de vuelo y el etiquetado final previo al envío al cliente.\\
+
+El montaje consta de dos subprocesos: el corte del papel y el pegado del mismo. El corte consiste en separar el borde del patrón y realizar los cortes señalados; el pegado consiste en unir los bordes del cuerpo con cinta adhesiva corriente. El proceso se hace de forma manual.\\
+
+La prueba de vuelo consiste en lanzar cada helicóptero, en posición vertical, desde una altura de 2 metros, y midiendo el tiempo que tarda en caer al suelo. Se considera que el helicóptero pasa la prueba si el tiempo de vuelo es mayor o igual a 1 segundo. La prueba se realiza con un cronógrafo manual, capaz de medir 1/100 segundos.\\
+
+El equipo de producción de Parasafe S.A. consta de 10 personas, que trabajan un único turno de 8 horas/día. El reparto de empleados entre las diferentes tareas es el siguiente:
+
+\begin{itemize}
+	\item Etapa de inspección: 1 personas más medio turno de otra
+	\item Etapa de corte: 2 personas más medio turno de otra
+	\item Etapa de pegado: 1 persona más medio turno de otra
+	\item Etapa de la prueba de vuelo: 3 personas
+	\item Etapa de etiquetado: 1 persona más medio turno de otra
+\end{itemize}
+
+El tiempo que se emplea en la fabricación de un helicóptero se desglosa a continuación:
+
+\begin{itemize}
+	\item Etapa de inspección: 35 segundos/unidad
+	\item Etapa de corte: 55 segundos/unidad
+	\item Etapa de pegado: 35 segundos/unidad
+	\item Etapa de la prueba de vuelo: 55 segundos/unidad
+	\item Etapa de etiquetado: 35 segundos/unidad
+\end{itemize}
+
+Los costes de producción se describen a continuación:
+
+\begin{enumerate}
+	\item Costes fijos
+	\begin{itemize}
+		\item Salario de los empleados
+		\begin{itemize}
+			\item 1200 €/mes por operario
+			\item 1900 €/mes por técnico
+		\end{itemize}
+		\item Alquiler y gastos de mantenimiento: 4000 €/mes 
+	\end{itemize}
+	
+	\item Coste del papel (tamaño DIN A4)
+	\begin{itemize}
+		\item Suministrador A (buena calidad): 0.8 €/hoja
+		\item Suministrador B (mala calidad): 0.6 €/hoja
+	\end{itemize}
+	
+	\item Coste de inspección: 0.55 €/unidad
+	\item Coste del corte: 1.5 €/unidad
+	\item Coste del pegado: 0.45 €/unidad
+	\item Coste de la prueba de vuelo: 1.5 €/unidad
+	\item Coste del etiquetado: 0.55 €/unidad
+\end{enumerate}
+
+El precio de venta actual es de 6 €/unidad.\\
+
+Teniendo en cuenta los tiempos diarios dedicados a cada tarea (sumando a todos los empleados) y el tiempo de realización de cada tarea en cada unidad se tiene que las unidades que se pueden realizar en cada tarea son las siguientes:
+
+\begin{table}[htbp!]
+	\centering
+	\caption{Número de unidades diarias por tareas}
+	\label{tbl:tiempos}
+	\begin{tabular}{@{}cccc@{}}
+		\toprule
+		Tarea        & \begin{tabular}[c]{@{}c@{}}Tiempo diario\\ (en horas)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Tiempo en realizar tarea\\ por unidad (en segundos)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Número de \\ unidades diarias\end{tabular} \\ \midrule
+		Inspección   & 12                                                                 & 35                                                                                          & 1\,234                                                                  \\
+		Corte        & 20                                                                 & 55                                                                                          & 1\,309                                                                  \\
+		Pegado       & 12                                                                 & 35                                                                                          & 1\,234                                                                  \\
+		Prueba vuelo & 24                                                                 & 55                                                                                          & 1\,570                                                                  \\
+		Etiquetado   & 12                                                                 & 35                                                                                          & 1\,234                                                                  \\ \bottomrule
+	\end{tabular}
+\end{table} 
+
+A la vista de la Tabla~\ref{tbl:tiempos} tenemos una producción de 1\,234 unidades diarias, que al mes son 37\,028 unidades.\\
+
+Estas 37\,028 suponen unos ingresos de 222\,168 € mensuales.\\
+
+Los costes mensuales asociados son de 220\,400 €.\\
+
+Por tanto, el beneficio mensual es de 1\,768.2 €.\\
+
+Los objetivos generales del proyecto son los siguientes:
+
+\begin{itemize}
+	\item El tiempo de vuelo debe ser mayor de 1 segundo. Sólo 1 de cada 2000 helicópteros podrá no cumplir este requisito de calidad.
+	\item El coste de producción debe ser mínimo
+\end{itemize} 
+
+
 
 \section{Medida}
 
