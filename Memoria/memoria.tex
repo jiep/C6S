@@ -30,6 +30,8 @@
 \setsansfont[Ligatures=TeX]{texgyreadventor}
 \setmainfont[Ligatures=TeX]{texgyrepagella}
 
+\usetikzlibrary{decorations.pathreplacing}
+
 \input{portada}
 
 \author{José Ignacio Escribano}
@@ -156,6 +158,194 @@ Los objetivos generales del proyecto son los siguientes:
 
 
 \section{Medida}
+
+En primer lugar, representamos el diagrama del proceso actual. Comenzamos con el diagrama de alto nivel para finalizar con el diagrama completo.\\
+
+Para representar el diagrama del proceso de alto nivel, debemos identificar las entradas (inputs) y salidas (outputs) del proceso. De las primeras identificamos a los empleados, la materia prima (el papel en el que vienen los helicópteros) y las herramientas. De las segundas identificamos solamente al helicóptero. La Figura~\ref{fig:diagrama_proceso_actual_altoç_nivel} el diagrama de alto nivel del proceso actual.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{tikzpicture}
+	\draw (0,0) node[text width=3cm,align=center, thick, draw=black] (entradas)
+	{
+		Empleados \\
+		Papel \\
+		Herramientas
+	};
+	
+	\draw (5,0) node[text width=3cm,align=center, thick, draw=black] (proceso)
+	{
+		\textbf{PROCESO}    
+	};
+	
+	\draw (10,0) node[text width=3cm,align=center, thick, draw=black] (salidas)
+	{
+		Helicóptero
+	};
+	
+	\draw [->] (entradas) -- (proceso);
+	\draw [->] (proceso) -- (salidas);
+	
+	\draw (0,1) node[text width=3cm,align=center, thick] (proceso)
+	{
+		\textbf{ENTRADAS}    
+	};
+	
+	\draw (10,1) node[text width=3cm,align=center, thick] (proceso)
+	{
+		\textbf{SALIDAS}    
+	};
+	\end{tikzpicture}
+	\caption{Diagrama del proceso actual de alto nivel}
+	\label{fig:diagrama_proceso_actual_altoç_nivel}
+\end{figure} 
+
+Para representar el diagrama del proceso actual, debemos identificar las fases de las que consta el proceso. Éstas son: inspección, ensamblado, 
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{tikzpicture}
+	
+	% Entradas
+	\draw (0,0) node[text depth=2cm,text width=5cm,align=center, thick, draw=black] (entradas)
+	{
+		\textbf{ENTRADAS}
+	};
+	
+	\node[text width=5cm, align=center] at (entradas.center){Empleados \\ Papel \\ Herramientas};
+	
+	
+	% Aprovisionamiento 
+	\draw (0,-3) node[text depth=1cm,text width=5cm,align=center, thick, draw=black] (aprovisionamiento)
+	{
+		\textbf{APROVISIONAMIENTO}
+	};
+	
+	\node[text width=5cm, align=center] at (aprovisionamiento.center){Papel};
+	
+	
+	% Montaje 
+	\draw (0,-6) node[text depth=1.5cm,text width=5cm,align=center, thick, draw=black] (montaje)
+	{
+		\textbf{MONTAJE}
+	};
+	
+	\node[text width=5cm, align=center] at (montaje.center){Papel \\ inspeccionado};
+	
+	% Prueba de vuelo 
+	\draw (0,-9) node[text depth=2cm,text width=5cm,align=center, thick, draw=black] (prueba)
+	{
+		\textbf{PRUEBA DE VUELO}
+	};
+	
+	\node[text width=5cm, align=center] at (prueba.center){Helicóptero};
+	
+	% Etiquetado 
+	\draw (0,-12) node[text depth=1cm,text width=5cm,align=center, thick, draw=black] (etiquetado)
+	{
+		\textbf{ETIQUETADO}
+	};
+	
+	\node[text width=5cm, align=center] at (etiquetado.center){Helicóptero}; 
+	
+	% Salidas 
+	\draw (0,-15) node[text depth=1cm,text width=5cm,align=center, thick, draw=black] (salidas)
+	{
+		\textbf{SALIDAS}
+	};
+	
+	\node[text width=5cm, align=center] at (salidas.center){Helicóptero};
+	
+	
+	
+	% Flechas
+	
+	\draw [->, thick] (entradas) -- (aprovisionamiento); 
+	\draw [->, thick] (aprovisionamiento) -- (montaje);       
+	\draw [->, thick] (montaje) -- (prueba);
+	\draw [->, thick] (prueba) -- (etiquetado);
+	\draw [->, thick] (etiquetado) -- (salidas);                     
+	
+	
+	% Entradas y salidas
+	
+	\draw (-5,-3) node[text depth=1cm,text width=4cm,align=right, thick]
+	{
+		empleado \textbf{C} \\
+		medir patrón \textbf{P} \\
+		descartar \textbf{P}
+	};
+	
+	\draw (-5,-6) node[text depth=1cm,text width=4cm,align=right, thick]
+	{
+		empleado \textbf{C} \\
+		cortar \textbf{P} \\
+		pegar \textbf{P}
+	};
+	
+	\draw (-5,-8.5) node[text depth=2.5cm,text width=4cm,align=right, thick]
+	{
+		empleado \textbf{C} \\
+		medir tiempo \textbf{P} \\
+		descartar \textbf{P} \\
+		largo ala \textbf{C} \\
+		ancho cuerpo \textbf{C} \\
+		clip, cinta \textbf{C} \\
+		cinta cuerpo \textbf{C} \\
+		velocidad viento \textbf{NC}
+	};
+	
+	\draw (-5,-12) node[text depth=1cm,text width=4cm,align=right, thick]
+	{
+		empleado \textbf{C} \\
+		etiquetar \textbf{P} \\
+		descartar \textbf{P}
+	};
+	
+	% Corte y pegado
+	\draw (5,-4) node[text depth=1cm,text width=3cm,align=center, thick, draw=black] (corte)
+	{
+		\textbf{CORTE}
+	};
+	\node[text width=3cm, align=center] at (corte.center){Helicóptero};
+	
+	
+	\draw (5,-8) node[text depth=1cm,text width=3cm,align=center, thick, draw=black] (pegado)
+	{
+		\textbf{PEGADO}
+	};
+	
+	\node[text width=3cm, align=center] at (pegado.center){Helicóptero};
+	
+	
+	\draw [->, thick] (corte) -- (pegado);
+	
+	
+	% Llave
+	\draw [decorate,decoration={brace,amplitude=10pt},xshift=-40pt,yshift=0pt, thick]
+	(4.5,-9) -- (4.5,-3) node [black,midway,xshift=-0.6cm] 
+	{\footnotesize $ $};
+	
+	
+	\draw (9,-4) node[text depth=1cm,text width=4cm,align=left, thick]
+	{
+		\textbf{C} empleado  \\
+		\textbf{P} separar  \\
+		\textbf{P} cortar 
+	};
+	
+	
+	\draw (9,-8) node[text depth=1cm,text width=4cm,align=left, thick]
+	{
+		\textbf{C} empleado  \\
+		\textbf{P} unir
+	};
+	
+	
+	\end{tikzpicture}
+	\caption{Diagrama del proceso actual}
+	\label{fig:diagrama_proceso_actual}
+\end{figure} 
 
 \section{Análisis gráfico}
 
