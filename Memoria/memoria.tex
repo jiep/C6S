@@ -427,9 +427,9 @@ La salida de Minitab es la siguiente:
 Tabla ANOVA de dos factores con interacción 
 
 Fuente                      GL       SC       MC        F      P
-Prototipo                 2  5,36825  2,68412  94,7562  0,000
-Operario                  2  0,25410  0,12705   4,4851  0,095
-Prototipo * Operario   4  0,11331  0,02833   1,5141  0,277
+Prototipo                    2  5,36825  2,68412  94,7562  0,000
+Operario                     2  0,25410  0,12705   4,4851  0,095
+Prototipo * Operario         4  0,11331  0,02833   1,5141  0,277
 Repetibilidad                9  0,16838  0,01871
 Total                       17  5,90403
 
@@ -440,8 +440,8 @@ Total                       17  5,90403
 Tabla ANOVA dos factores sin interacción 
 
 Fuente         GL       SC       MC        F      P
-Prototipo    2  5,36825  2,68412  123,875  0,000
-Operario     2  0,25410  0,12705    5,863  0,015
+Prototipo       2  5,36825  2,68412  123,875  0,000
+Operario        2  0,25410  0,12705    5,863  0,015
 Repetibilidad  13  0,28168  0,02167
 Total          17  5,90403
 
@@ -564,6 +564,98 @@ En el grupo de las mediciones identificamos como causas el largo de ala, el anch
 
 
 \section{Análisis gráfico}
+
+Con las causas definidas que pueden causar las variaciones en el tiempo de vuelo de nuestros helicópteros, procedemos a analizar tanto desde un punto gráfico como numérico. Sólo nos centraremos en las condiciones de diseño (largo del ala, largo del cuerpo, ancho del cuerpo, si tiene clip o no, etc) y los operarios. Las causas como el mantenimiento de las herramientas o la edad las consideramos irrelevantes para el tiempo de vuelo.\\
+
+Con los datos recogidos para el sistema de medición (Tabla~\ref{tbl:tiempos_operario}) y para la capacidad del proceso (Tabla~\ref{tbl:tiempos_capacidad}) analizamos de forma gráfica estos datos con la ayuda de Minitab.\\
+
+En primer lugar, analizamos la normalidad de los datos del sistema de medición. Aplicamos el test de Anderson-Darling con Minitab. Los resultados de este test se pueden ver en la Figura~\ref{fig:normalidad_rr}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Grafica_de_normalidad_de_Tiempo_(datos_RR)}
+	\caption{Resultados del test de normalidad para los datos del sistema de medida}
+	\label{fig:normalidad_rr}
+\end{figure}
+
+Podemos observar que el p-valor es 0.059, mayor que 0.05, por lo que no hay evidencias para rechazar la hipótesis de que los datos sigan una distribución normal.\\
+
+Ahora, podemos comprobar los efectos de cada factor (prototipo y operario) sobre el tiempo de vuelo. Para ello, aplicamos un diagrama de efectos principales. La Figura~\ref{fig:efectos_principales} muestra los resultados de este diagrama.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Grafica_de_efectos_principales_para_Tiempo}
+	\caption{Diagrama de efectos principales para el tiempo de vuelo}
+	\label{fig:efectos_principales}
+\end{figure}
+
+Se puede observar que entre los tiempos medios de vuelo para cada uno de los operarios (A, B, C) no hay una gran diferencia, lo que hace indicar que el operario que realice el helicóptero apenas influye en el tiempo de vuelo. Sin embargo, en los tiempos medios según el prototipo, existen grandes diferencias de tiempo. El que más sobresale es el prototipo número 3, que parece indicar que la combinación de las variables de diseño (longitud del ala, longitud del cuerpo, anchura del cuerpo, con clip o sin clip, etc) parece influir bastante en el tiempo de vuelo.\\
+
+A continuación, analizamos el tiempo de vuelo según el prototipo realizando gráficas de efectos principales como en el caso anterior (Figura~\ref{fig:efectos_principales_prototipos}).
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Prototipo 1]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_efectos_principales_para_Tiempo_(Prototipo_1)}}
+	\subfigure[Prototipo 2]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_efectos_principales_para_Tiempo_(Prototipo_2)}}
+	\subfigure[Prototipo 3]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_efectos_principales_para_Tiempo_(Prototipo_3)}}
+	\caption{Diagrama de efectos principales para el tiempo según el tipo de prototipo} \label{fig:efectos_principales_prototipos}
+\end{figure}
+
+Observamos que los tiempos según el tipo de prototipo, sí parece estar influido por el operario que realizó el helicóptero. En el caso del prototipo 1, el mayor tiempo medio se consiguió con el operario A, aunque todos cumplen con el objetivo mínimo del tiempo de vuelo fijado por el cliente. En el prototipo 2, de nuevo, el mayor tiempo de vuelo se consigue con el operario A, pero con los operarios B y C no se consigue el objetivo mínimo de 1 segundo de vuelo. Por último, con el prototipo 3, se cumple de sobra con el objetivo mínimo de tiempo de vuelo, y con el operario A se realizan los mejores tiempos de vuelo. Parece que el operario A es el que mejor realiza los helicóptero, ya que con él se consiguen los mejores tiempos de vuelo (independientemente del prototipo elegido).\\
+
+A continuación, analizamos la capacidad de cada uno de los procesos si sólo fabricáramos un solo tipo de prototipo (Figura~\ref{fig:capacidad_prototipos}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Prototipo 1]{\includegraphics[width=0.45\linewidth]{imagenes/Informe_de_capacidad_del_proceso_de_Tiempo_(Prototipo_1)}}
+	\subfigure[Prototipo 2]{\includegraphics[width=0.45\linewidth]{imagenes/Informe_de_capacidad_del_proceso_de_Tiempo_(Prototipo_2)}}
+	\subfigure[Prototipo 3]{\includegraphics[width=0.45\linewidth]{imagenes/Informe_de_capacidad_del_proceso_de_Tiempo_(Prototipo_3)}}
+	\caption{Capacidad del proceso según el tipo de prototipo} \label{fig:capacidad_prototipos}
+\end{figure}
+
+Si sólo fabricáramos prototipos como el número 1, nuestros proceso mejoraría hasta las 2.11 sigmas a corto plazo. En el caso del prototipo 2, tenemos un proceso de -0.12 sigmas. Debido al pequeño tamaño muestral $n=6$, consideraremos esta capacidad como no válida, y usaremos el nivel obtenido en la Figura~\ref{fig:capacidad_actual}. Recordar que la capacidad del proceso se calculó usando sólo prototipos del segundo tipo. El tercer prototipo, tiene una capacidad de 7.84 sigmas, que cumple con los objetivos de calidad. Es de esperar que para obtener la calidad pedida por el cliente, necesitemos fabricar los helicópteros más parecidos a las especificaciones del tercer prototipo que a los de los otros dos. \\
+
+A continuación, realizamos un histograma para de cada uno de los tipos de prototipo (Figura~\ref{fig:histograma}).
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Histograma_de_Tiempo_1_Tiempo_2_Tiempo_3_(por_prototipo)}
+	\caption{Histograma según el tipo de prototipo}
+	\label{fig:histograma}
+\end{figure}
+
+Se puede observar como el prototipo que obtiene mayores tiempos es el número 3, superando los dos segundos de vuelo, el tiempo del prototipo 1 se sitúa en torno a 1.4-1.5 segundos de vuelo, mientras que el prototipo 2 tiene una media que no llega al segundo, y por tanto, no cumple el tiempo mínimo fijado por el cliente. Aunque, hay que tener en cuenta que estamos con una muestra muy pequeña $n=6$.\\
+
+A continuación realizamos una gráfica de serie temporal, según el tipo de prototipo (Figura~\ref{fig:temporal}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Grafica_de_series_de_tiempo_de_Tiempo_1;_Tiempo_2;_Tiempo_3}
+	\caption{Diagrama de serie temporal según el prototipo}
+	\label{fig:temporal}
+\end{figure}
+
+Vemos que el prototipo 3 es el que mayor tiempo de vuelo tiene, superando con mucha diferencia a los otros dos prototipos. El prototipo 1 mantiene el tiempo de vuelo mucho más uniforme, siempre por encima de los límites de calidad especificados. Por el contrario, el prototipo 2 no llega al límite de calidad en la mayoría de las veces.\\
+
+Si representamos ahora el diagrama de puntos (Figura~\ref{fig:diagrama_puntos}), vemos que existen dos tiempos de vuelos: los que son superiores a los 2 segundos y los que son inferiores a 1.5 segundos. Los primeros corresponden a los del prototipo 3, mientras que los segundos vienen de los prototipos 1 y 2.\\
+
+También observamos 3 datos que están por debajo del tiempo especificado. Éstos se corresponden con los obtenidos del prototipo 2.\\ 
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Grafica_de_puntos_de_Tiempo}
+	\caption{Diagrama de puntos para el tiempo de vuelo}
+	\label{fig:diagrama_puntos}
+\end{figure}
+
+Si, por último, representamos un diagrama de cajas (Figura~\ref{fig:diagrama_cajas}), vemos que el prototipo 3 es el que mayor tiempo de vuelo tiene, aunque con el operario C es con el que menor tiempo se consigue. Los tiempos del prototipo 1 varían poco, salvo en el caso del operario B que sus tiempos tienen mayor amplitud, aunque dentro del límite marcado. Los tiempos del prototipo 2, con el operario A, están dentro de los límites especificados. Con el operario B, están todos fuera y los del operario C hay algunos que están dentro y otros fuera. 
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Grafica_de_caja_de_Tiempo}
+	\caption{Diagrama de cajas para el tiempo de vuelo}
+	\label{fig:diagrama_cajas}
+\end{figure}
 
 \subsection{Análisis numérico}
 
