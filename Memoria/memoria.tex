@@ -657,7 +657,408 @@ Si, por último, representamos un diagrama de cajas (Figura~\ref{fig:diagrama_ca
 	\label{fig:diagrama_cajas}
 \end{figure}
 
+En definitiva, hemos visto que el prototipo con mayor tiempo de vuelo es el 3, seguido del 1. El único que no cumplía los objetivos de calidad es el prototipo 2.
+
 \subsection{Análisis numérico}
+
+A continuación realizaremos una serie de contrastes de hipótesis para conocer si existen diferencias significativas entre los tiempos medios según distintas variables.\\
+
+Comenzaremos con la variable Clip. Tenemos que contrastar si las medidas de los tiempos de vuelo entre los helicópteros con clip o sin él son significativas. Es decir:
+
+\begin{eqnarray*}
+\begin{cases}
+	H_0: \mu_{\text{Clip = sí}} = \mu_{\text{Clip = no}} \\
+	H_1: \mu_{\text{Clip = sí}} \neq \mu_{\text{Clip = no}}
+\end{cases}
+\end{eqnarray*}
+
+Resolviendo este contraste de hipótesis con Minitab, tenemos los resultados que se muestran a continuación:
+
+\begin{verbatim}
+T de dos muestras para Clip=si vs. Clip=no
+
+                                 Error
+                              estándar
+                                 de la
+         N  Media  Desv.Est.     media
+Clip=si  6  1,061      0,283      0,12
+Clip=no  6  2,266      0,161     0,066
+
+
+Diferencia = μ (Clip=si) - μ (Clip=no)
+Estimación de la diferencia:  -1,205
+IC de 95% para la diferencia:  (-1,520; -0,891)
+Prueba T de diferencia = 0 (vs. ≠): Valor T = -9,07                               Valor p = 0,000  GL = 7
+\end{verbatim}
+
+Es decir, p-valor = 0.000 < 0.05, por lo que rechazamos $H_0$ y existen diferencias significativas entre los tiempos de vuelo de los helicópteros cuando llevan o no llevan un clip. Es más, cuando no lo llevan el tiempo de vuelo es mayor: de media será 1.205 segundos y en el 95\% de los casos estará entre 0.891 y 1.5220 segundos más que no llevar clip.\\
+
+Ahora analizaremos si la longitud del cuerpo influye en el tiempo de vuelo. Tenemos dos medidas de la longitud del cuerpo: 6.5 y 8.0 cm. El constaste de hipótesis en el siguiente:
+
+\begin{eqnarray*}
+	\begin{cases}
+		H_0: \mu_{\text{Largo\_cuerpo = 6.5}} = \mu_{\text{Largo\_cuerpo = 8.0}} \\
+		H_1: \mu_{\text{Largo\_cuerpo = 6.5}} \neq \mu_{\text{Largo\_cuerpo = 8.0}}
+	\end{cases}
+\end{eqnarray*}
+
+Los resultados que devuelve Minitab son los siguientes:
+
+\begin{verbatim}
+T de dos muestras para Largo_cuerpo=8 vs. Largo_cuerpo=6,5
+
+                                           Error
+                                        estándar
+                                           de la
+                   N  Media  Desv.Est.     media
+Largo_cuerpo=8    12  1,195      0,259     0,075
+Largo_cuerpo=6,5   6  2,266      0,161     0,066
+
+
+Diferencia = μ (Largo_cuerpo=8) - μ (Largo_cuerpo=6,5)
+Estimación de la diferencia:  -1,0716
+IC de 95% para la diferencia:  (-1,2851; -0,8580)
+Prueba T de diferencia = 0 (vs. ≠): Valor T = -10,76  
+                                    Valor p = 0,000  GL = 14
+\end{verbatim}
+
+Vemos que el p-valor=0.000 < 0.05, por lo que tenemos que rechazar $H_0$ y aceptar que existen diferencias significativas en los tiempos de vuelo, según la longitud del cuerpo del helicóptero. De hecho, el mayor tiempo de vuelo se da cuando la longitud del cuerpo es de 6.5 cm. La estimación de la diferencia es de 1.0716 con respecto a la longitud del cuerpo de 8.5 cm. Y en el 95\% de los casos estará entre 0.8580 y 1.2851 segundos de diferencia en el tiempo de vuelo. \\
+
+Por último, realizaremos un contraste de hipótesis para ver si existen diferencias entre los helicópteros (con clip) con longitud de ala igual a 8.0 y los que tienen longitud de ala de 6.5 cm. El contraste de hipótesis es el siguiente:
+
+\begin{eqnarray*}
+	\begin{cases}
+		H_0: \mu_{\text{Largo\_ala = 6.5}} = \mu_{\text{Largo\_ala = 8.0}} \\
+		H_1: \mu_{\text{Largo\_ala = 6.5}} \neq \mu_{\text{Largo\_ala = 8.0}}
+	\end{cases}
+\end{eqnarray*}
+
+Los resultados del test son los siguientes:
+
+\begin{verbatim}
+T de dos muestras para Largo_ala=8 vs. Largo_ala=6,5
+
+                                       Error
+                                    estándar
+                                       de la
+               N  Media  Desv.Est.     media
+Largo_ala=8    6  1,328      0,155     0,063
+Largo_ala=6,5  6  1,061      0,283      0,12
+
+
+Diferencia = μ (Largo_ala=8) - μ (Largo_ala=6,5)
+Estimación de la diferencia:  0,268
+IC de 95% para la diferencia:  (-0,044; 0,579)
+Prueba T de diferencia = 0 (vs. ≠): Valor T = 2,03  
+                                    Valor p = 0,082  GL = 7
+\end{verbatim}
+
+Vemos que el p-valor = 0.082 > 0.05, por lo que no hay evidencias para rechazar $H_0$, por lo que tenemos que apenas hay diferencia entre los tiempos de vuelo cuando el helicóptero lleva clip y la longitud de las alas está entre 6.5 y 8.0 cm. La diferencia media está en 0.268 segundos para la longitud de ala igual a 8 (es decir, esta longitud de ala da una pequeña mejora en el tiempo de vuelo, apenas significativo con respecto a la longitud de 6.5 cm).\\
+
+Acabamos de ver que entre los helicópteros con clip, un largo de ala entre 6.5 y 8 cm. apenas aporta nada de tiempo de vuelo al helicóptero, pero no sabemos nada de cómo influye en los helicópteros sin clip. Para ello, tomamos una serie de tiempos con helicópteros del prototipo 3 (el único que no lleva clip), con distintas longitudes de ala (desde 6.5 hasta 9.5). Los datos se pueden ver en la Tabla~\ref{tbl:regresion}.\\
+
+
+\begin{table}[htbp!]
+	\centering
+	\caption{Tiempos de distintos longitudes de ala para el prototipo 3}
+	\label{tbl:regresion}
+	\begin{tabular}{@{}cc@{}}
+		\toprule
+		Largo ala & Tiempo \\ \midrule
+		9.5       & 2.039  \\
+		9.5       & 2.101  \\
+		9.5       & 2.320  \\
+		8.5       & 2.135  \\
+		8.5       & 1.885  \\
+		8.5       & 1.949  \\
+		7.5       & 1.766  \\
+		7.5       & 1.812  \\
+		7.5       & 1.542  \\
+		6.5       & 1.380  \\
+		6.5       & 1.340  \\
+		6.5       & 1.277  \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+Vamos a ver si existe una relación lineal entre estas dos variables, con la ayuda del análisis de regresión. Los resultados de este análisis se pueden ver a continuación:
+
+\begin{verbatim}
+La ecuación de regresión es
+Tiempo = - 0,4013 + 0,2746 Largo ala
+
+
+S = 0,125637   R-cuad. = 87,8%   R-cuad.(ajustado) = 86,5%
+
+
+Análisis de Varianza
+
+Fuente     GL       SC       MC      F      P
+Regresión   1  1,13108  1,13108  71,66  0,000
+Error      10  0,15785  0,01578
+Total      11  1,28892
+\end{verbatim}
+
+Vemos que existe una fuerte relación lineal entre estas dos variables, teniendo un coeficiente de determinación ajustado $R^2$ de 0.865, lo que indica un ajuste bastante bueno.\\
+
+La recta de regresión es la siguiente:
+
+\begin{equation*}
+\text{Tiempo} = -0.4013 + 0.2746 \cdot \text{Largo ala}
+\end{equation*}
+
+La recta de regresión junto con el diagrama de dispersión se muestra en la Figura~\ref{fig:regresion}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Linea_ajustada__Tiempo_vs}
+	\caption{Recta de regresión para el tiempo y la longitud del ala}
+	\label{fig:regresion}
+\end{figure}
+
+Observamos que la gran mayoría de los datos se encuentran dentro del intervalo de probabilidad del 95\%.\\
+
+Sólo nos queda verificar que todas las hipótesis del modelo de regresión se cumplen. Para ello, hacemos un análisis de los residuos del modelo (Figura~\ref)\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Graficas_de_residuos_para_Tiempo_(regresion)}
+	\caption{Análisis de residuos para el modelo de regresión}
+	\label{fig:residuos_regresion}
+\end{figure}
+
+Nada parece indicar que se viole alguna de las hipótesis de partida: los residuos se distribuyen según una distribución normal, la varianza de los residuos no depende del predictor y la independencia de los residuos.\\
+
+A continuación, usamos ANOVA para identificar las variables significativas que afectan al tiempo de vuelo.\\
+
+Comenzamos por la variable Clip. Lo primero de todo es comprobar si se cumplen las hipótesis del modelo: independencia, homocedasticidad y normalidad. \\
+
+Comprobamos la normalidad. El resumen se muestra en la Figura~\ref{fig:normalidad_clip}.\\ 
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Clip=sí]{\includegraphics[width=0.45\linewidth]{imagenes/Informe_de_resumen_de_Tiempo(Clip=si)}}
+	\subfigure[Clip=no]{\includegraphics[width=0.45\linewidth]{imagenes/Informe_de_resumen_de_Tiempo(Clip=no)}}
+	\caption{Resumen de la variable Clip} \label{fig:normalidad_clip}
+\end{figure}
+
+El p-valor del test de Anderson-Darling indica que cada subgrupo es normal, por lo que se cumple esta hipótesis.\\
+
+Ahora comprobamos la independencia. La correlación entre variables se muestra a continuación:
+
+\begin{verbatim}
+Correlación de Pearson de Clip=si y Clip=no = -0,672
+Valor p = 0,144
+\end{verbatim}
+
+Puesto que el p-valor es mayor que 0.05, podemos asumir independencia.\\
+
+Sólo nos queda comprobar la homocedasticidad (o igualdad de varianzas). El resultado del test es el siguiente:
+
+\begin{verbatim}
+Método
+
+Hipótesis nula          Todas las varianzas son iguales
+Hipótesis alterna       Por lo menos una varianza es diferente
+Nivel de significancia  α = 0,05
+
+
+Intervalos de confianza de Bonferroni de 95% para desviaciones estándar
+
+Muestra  N  Desv.Est.           IC
+Clip=si  6   0,282756  (0,146390; 0,871845)
+Clip=no  6   0,161417  (0,063302; 0,657064)
+
+Nivel de confianza individual = 97,5%
+
+
+Pruebas
+
+                         Estadística
+Método                     de prueba  Valor p
+Comparaciones múltiples         1,74    0,187
+Levene                          2,23    0,166
+
+\end{verbatim}
+
+Puesto que el p-valor es mayor que 0.05, no hay evidencia estadística para rechazar la igualdad de varianzas.\\
+
+Tenemos, por tanto, un modelo válido. Procedemos a analizarlo.\\
+
+\begin{verbatim}
+Método
+
+Hipótesis nula          Todas las medias son iguales
+Hipótesis alterna       Por lo menos una media es diferente
+Nivel de significancia  α = 0,05
+
+Se presupuso igualdad de varianzas para el análisis.
+
+
+Información del factor
+
+Factor  Niveles  Valores
+Factor        2  Clip=si; Clip=no
+
+
+Análisis de Varianza
+
+Fuente  GL  SC Ajust.  MC Ajust.  Valor F  Valor p
+Factor   1     4,3585    4,35849    82,23    0,000
+Error   10     0,5300    0,05300
+Total   11     4,8885
+
+
+Resumen del modelo
+
+                      R-cuad.  R-cuad.
+       S  R-cuad.  (ajustado)   (pred)
+0,230224   89,16%      88,07%   84,39%
+
+
+Medias
+
+Factor   N   Media  Desv.Est.      IC de 95%
+Clip=si  6   1,061      0,283  ( 0,851;  1,270)
+Clip=no  6  2,2662     0,1614  (2,0567; 2,4756)
+
+Desv.Est. agrupada = 0,230224
+
+\end{verbatim}
+
+Existen diferencias significativas entre el tiempo medio de vuelo de los helicópteros con clip o sin clip. Este resultado sólo confirma lo que ya sabíamos: que el clip influye en el tiempo de vuelo de los helicópteros.\\
+
+Ahora analizaremos la variable largo del ala. Representamos su resumen de residuos para ver que se cumplen todas las hipótesis del modelo (Figura~\ref{fig:residuos_largo_ala}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Graficas_de_residuos_para_Tiempo_(ANOVA_largo_ala)}
+	\caption{Análisis de residuos para la longitud del ala}
+	\label{fig:residuos_largo_ala}
+\end{figure}
+
+Nada parece indicar una violación de las hipótesis de partida.\\
+
+Analizamos el modelo, con los resultados siguientes:
+
+\begin{verbatim}
+Método
+
+Hipótesis nula          Todas las medias son iguales
+Hipótesis alterna       Por lo menos una media es diferente
+Nivel de significancia  α = 0,05
+
+Se presupuso igualdad de varianzas para el análisis.
+
+
+Información del factor
+
+Factor     Niveles  Valores
+Largo ala        3  6,5; 8,0; 9,5
+
+
+Análisis de Varianza
+
+Fuente     GL  SC Ajust.  MC Ajust.  Valor F  Valor p
+Largo ala   2     4,8078    2,40392    55,40    0,000
+Error      15     0,6509    0,04339
+Total      17     5,4587
+
+
+Resumen del modelo
+
+                      R-cuad.  R-cuad.
+       S  R-cuad.  (ajustado)   (pred)
+0,208312   88,08%      86,49%   82,83%
+
+
+Medias
+
+Largo
+ala    N   Media  Desv.Est.      IC de 95%
+6,5    6   1,061      0,283  ( 0,880;  1,242)
+8,0    6  1,3283     0,1555  (1,1471; 1,5096)
+9,5    6  2,2662     0,1614  (2,0849; 2,4474)
+
+Desv.Est. agrupada = 0,208312
+\end{verbatim}
+
+Puesto que el p-valor es menor que 0.05, podemos afirmar que existe al menos un tiempo medio que no se corresponde con los demás.\\
+
+Representamos el tiempo de vuelo según estos factores (Figura~\ref{fig:resultado_largo_alas}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de cajas]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_caja_de_Tiempo_(ANOVA_largo_ala)}}
+	\subfigure[Gráfica de intervalos]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_intervalos_de_Tiempo_vs_(ANOVA_largo_ala)}}
+	\caption{Resultado de la variable longitud de las alas} \label{fig:resultado_largo_alas}
+\end{figure}
+
+Vemos que el que proporciona más tiempo de vuelo es la longitud de 9.5 cm. Comparemos si existen diferencias significativas entre las longitudes de 6.5 y 8 cm. Esto lo habíamos calculado anteriormente, dando como resultado que no había diferencias entre las medias de los tiempos de vuelo con estas longitudes de ala.\\
+
+Procedemos a analizar la variable longitud del cuerpo. Hacemos un análisis de los residuos del modelo que se pueden ver en la Figura~\ref{fig:residuos_largo_cuerpo}. 
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Graficas_de_residuos_para_Tiempo_ANOVA_(largo_cuerpo)}
+	\caption{Análisis de residuos para la longitud del cuerpo}
+	\label{fig:residuos_largo_cuerpo}
+\end{figure}
+
+Parece ser que no se incumple ninguna hipótesis de partida. Por tanto, estamos en disposición de analizar la variable. Los resultados se muestran a continuación:
+
+\begin{verbatim}
+Método
+
+Hipótesis nula          Todas las medias son iguales
+Hipótesis alterna       Por lo menos una media es diferente
+Nivel de significancia  α = 0,05
+
+Se presupuso igualdad de varianzas para el análisis.
+
+
+Información del factor
+
+Factor        Niveles  Valores
+Largo cuerpo        2  6,5; 8,0
+
+
+Análisis de Varianza
+
+Fuente        GL  SC Ajust.  MC Ajust.  Valor F  Valor p
+Largo cuerpo   1     4,5932    4,59316    84,90    0,000
+Error         16     0,8656    0,05410
+Total         17     5,4587
+
+
+Resumen del modelo
+
+                      R-cuad.  R-cuad.
+       S  R-cuad.  (ajustado)   (pred)
+0,232591   84,14%      83,15%   80,53%
+
+
+Medias
+
+Largo
+cuerpo   N   Media  Desv.Est.      IC de 95%
+6,5      6  2,2662     0,1614  (2,0649; 2,4675)
+8,0     12  1,1946     0,2585  (1,0522; 1,3369)
+
+Desv.Est. agrupada = 0,232591
+\end{verbatim} 
+
+Vemos que el p-valor es 0.000, rechazamos la hipótesis nula de que las medias son igual, y podemos afirmar que existen diferencias entre los tiempos de vuelo dependiendo de la longitud del cuerpo.\\
+
+Para ver cómo influyen en el tiempo de vuelo, representamos el diagrama de intervalos y de caja (Figura~\ref{fig:resultado_largo_cuerpo}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de cajas]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_caja_de_Tiempo_(ANOVA_largo_cuerpo)}}
+	\subfigure[Gráfica de intervalos]{\includegraphics[width=0.45\linewidth]{imagenes/Grafica_de_intervalos_de_Tiempo_vs_(ANOVA_largo_cuerpo)}}
+	\caption{Resultado de la variable longitud de las alas} \label{fig:resultado_largo_cuerpo}
+\end{figure}
+
+Vemos que la longitud que cuya longitud de cuerpo tiene mayor tiempo de vuelo es la de 6.5 cm, con un intervalo de confianza (al 95\%) de que el tiempo de vuelo está entre 2.0649 y 2.4675 segundos. Si nos fijamos en el intervalo de confianza para la longitud de 8 cm, vemos que el intervalo de confianza se sitúa entre 1.0522 y 1.3369, que cumple las especificaciones de calidad.
 
 \section{Mejora}
 
