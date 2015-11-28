@@ -27,6 +27,8 @@
 \usepackage{subfigure}
 \usepackage{footnote}
 \usepackage{url}
+\usepackage[titletoc]{appendix}
+
 \setsansfont[Ligatures=TeX]{texgyreadventor}
 \setmainfont[Ligatures=TeX]{texgyrepagella}
 \setmonofont{FreeMono}
@@ -1058,15 +1060,391 @@ Para ver cómo influyen en el tiempo de vuelo, representamos el diagrama de inte
 	\caption{Resultado de la variable longitud de las alas} \label{fig:resultado_largo_cuerpo}
 \end{figure}
 
-Vemos que la longitud que cuya longitud de cuerpo tiene mayor tiempo de vuelo es la de 6.5 cm, con un intervalo de confianza (al 95\%) de que el tiempo de vuelo está entre 2.0649 y 2.4675 segundos. Si nos fijamos en el intervalo de confianza para la longitud de 8 cm, vemos que el intervalo de confianza se sitúa entre 1.0522 y 1.3369, que cumple las especificaciones de calidad.
+Vemos que la longitud que cuya longitud de cuerpo tiene mayor tiempo de vuelo es la de 6.5 cm, con un intervalo de confianza (al 95\%) de que el tiempo de vuelo está entre 2.0649 y 2.4675 segundos. Si nos fijamos en el intervalo de confianza para la longitud de 8 cm, vemos que el intervalo de confianza se sitúa entre 1.0522 y 1.3369, que cumple las especificaciones de calidad.\\
+
+Por tanto, hay al menos tres variables que influyen en el tiempo de vuelo: llevar o no clip, el largo del ala y el largo del cuerpo. A continuación realizaremos unos experimentos para conocer la influencia de otras variables como llevar o no celo en el cuerpo o en ala o  el ancho del cuerpo.
 
 \section{Mejora}
 
+A continuación realizaremos una serie de experimentos para conocer las variables más significativas y las interacciones entre ellas que más influyen en el tiempo de vuelo de los helicópteros. Para ello, realizaremos dos experimentos: uno fraccional con fracción 1/2 y uno completo. Ambos experimentos tienen 6 factores con puntos centrales (entre paréntesis se indican los niveles): clip (sí, no), celo ala (sí, no), celo cuerpo (sí, no), largo ala (6.5, 9.5), largo cuerpo (6.5, 9.5)  y ancho cuerpo (4, 6).\\
+
+Comenzaremos por el experimentos fraccional. Se trata, como hemos comentado anteriormente, de un diseño fraccional con fracción 1/2 con 6 factores. Los datos de este experimento se pueden ver el Anexo~\ref{chp:experimentos}. Analizamos el diseño factorial con la ayuda de Minitab. Los resultados de la salida (simplificada por su gran longitud) son los siguientes:
+
+\begin{verbatim}
+... (simplificado por brevedad)
+
+Resumen del modelo
+
+R-cuad.  R-cuad.
+S  R-cuad.  (ajustado)   (pred)
+*  100,00%           *        *
+
+Término                      Valor T  Valor p   VIF
+Constante                          *        *
+Clip                               *        *  5,00
+Celo_ala                           *        *  5,00
+Celo_cuerpo                        *        *  5,00
+Largo_ala                          *        *  1,00
+Largo_cuerpo                       *        *  1,00
+Ancho_cuerpo                       *        *  1,00
+Clip*Celo_ala                      *        *  5,00
+Clip*Celo_cuerpo                   *        *  5,00
+Clip*Largo_ala                     *        *  1,00
+Clip*Largo_cuerpo                  *        *  1,00
+Clip*Ancho_cuerpo                  *        *  1,00
+Celo_ala*Celo_cuerpo               *        *  5,00
+Celo_ala*Largo_ala                 *        *  1,00
+Celo_ala*Largo_cuerpo              *        *  1,00
+Celo_ala*Ancho_cuerpo              *        *  1,00
+Celo_cuerpo*Largo_ala              *        *  1,00
+Celo_cuerpo*Largo_cuerpo           *        *  1,00
+Celo_cuerpo*Ancho_cuerpo           *        *  1,00
+Largo_ala*Largo_cuerpo             *        *  1,00
+Largo_ala*Ancho_cuerpo             *        *  1,00
+Largo_cuerpo*Ancho_cuerpo          *        *  1,00
+Clip*Celo_ala*Celo_cuerpo          *        *  5,00
+Clip*Celo_ala*Largo_ala            *        *  1,00
+Clip*Celo_ala*Largo_cuerpo         *        *  1,00
+Clip*Celo_ala*Ancho_cuerpo         *        *  1,00
+Clip*Celo_cuerpo*Largo_ala         *        *  1,00
+Clip*Celo_cuerpo*Largo_cuerpo      *        *  1,00
+Clip*Celo_cuerpo*Ancho_cuerpo      *        *  1,00
+Clip*Largo_ala*Largo_cuerpo        *        *  1,00
+Clip*Largo_ala*Ancho_cuerpo        *        *  1,00
+Clip*Largo_cuerpo*Ancho_cuerpo     *        *  1,00
+... 
+(simplificado por brevedad)
+
+\end{verbatim}
+
+Observamos que el p-valor se muestra como un asterisco. Esto es debido a que no quedan grados de libertad de los residuos~\cite{Asterik}. No nos podemos hacer una idea de las variables más significativas con estos datos, pero sí a través del diagrama de Pareto y de efectos normales (Figura~\ref{fig:resultado_experimento_fraccional_1}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de Pareto]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Pareto_de_los_efectos_para_Tiempo_(todos_los_factores)}}
+	\subfigure[Gráfica de efectos normales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Grafica_de_los_efectos_para_Tiempo_(todos_los_factores)}}
+	\caption{Resultado del modelo con todos los factores} \label{fig:resultado_experimento_fraccional_1}
+\end{figure}
+
+Observamos que los factores más significantes son el clip (A), el largo del ala (D) y el largo del cuerpo (E), junto con las interacciones del largo del ala y del cuerpo (DE), de los dos anteriores más el ancho del cuerpo (DEF), y la interacción entre el clip y los celos --ala y cuerpo-- (ABC).\\
+
+Los efectos principales de este modelo se puede ver en la Figura~\ref{fig:efectos_principales_todos_los_factores}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de efectos principales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Grafica_de_efectos_principales_para_Tiempo_(todos_los_factores)}}
+	\subfigure[Gráfica de interacción]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Grafica_de_interaccion_para_Tiempo_(todos_los_factores)}}
+	\caption{Diagramas de efectos principales e interacción}
+	\label{fig:efectos_principales_todos_los_factores}
+\end{figure}
+
+Se puede observar que los mayores efectos se producen en clip, largo ala y largo cuerpo. La mayor interacción se produce entre largo ala y largo cuerpo.\\
+
+Con estos factores, procedemos a reducir el modelo, pero antes necesitamos comprobar si el modelo es adecuado. Para ello, representamos el diagrama de residuos, pero Minitab no nos lo muestra debido a la escasez de grados de libertad.\\
+
+Reducimos el modelo con los factores A, D,E, DE, DEF, ABC. Minitab nos recomienda añadir al modelo otros factores como A, E, F y algunas interacciones. Los gráficos de Pareto y de efectos normales se muestran en la Figura~\ref{fig:resultado_experimento_fraccional_2}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de Pareto]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Pareto_de_los_efectos_para_Tiempo_2}}
+	\subfigure[Gráfica de efectos normales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Grafica_de_los_efectos_para_Tiempo_2}}
+	\caption{Resultado del modelo con todos los factores} \label{fig:resultado_experimento_fraccional_2}
+\end{figure}
+
+Se observa que ahora los factores más significativos son A, D, E y las interacciones DE y DEF.\\
+
+Comprobemos el análisis de residuos de este modelo (Figura~\ref{fig:residuos_2}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Experimento_fraccional/Graficas_de_residuos_para_Tiempo_2}
+	\caption{Análisis de residuos para el segundo modelo}
+	\label{fig:residuos_2}
+\end{figure}
+
+Nada parece indicar que se viola la normalidad, la aleatoriedad de los residuos o el orden de observación de los residuos.\\
+
+Comprobamos si podemos simplificar el modelo de nuevo. Para ello, sólo añadimos al modelo los factores A, D, E y las interacciones DE y DEF. Los diagramas de Pareto y de interacción se muestran en la Figura~\ref{fig:resultado_experimento_fraccional_3}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de Pareto]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Pareto_de_los_efectos_para_Tiempo_3}}
+	\subfigure[Gráfica de efectos normales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Grafica_de_los_efectos_para_Tiempo_3}}
+	\caption{Resultado del modelo con todos los factores} \label{fig:resultado_experimento_fraccional_3}
+\end{figure}
+
+Observamos que las variables más significativas de este modelo son los factores A, D y E, y la interacción DE. Comprobamos las hipótesis de este modelo (Figura~\ref{fig:residuos_3}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Experimento_fraccional/Graficas_de_residuos_para_Tiempo_3}
+	\caption{Análisis de residuos para el tercer modelo}
+	\label{fig:residuos_3}
+\end{figure}
+
+Nada parece indicar que no se cumplen las hipótesis de partida.\\
+
+Para finalizar, simplificamos el modelo añadiendo sólo los factores A, D y E, y la interacción DE. Los gráficos de Pareto y de interacción de este modelo se puede ver en la Figura~\ref{fig:resultado_experimento_fraccional_4}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de Pareto]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Pareto_de_los_efectos_para_Tiempo_4}}
+	\subfigure[Gráfica de efectos normales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_fraccional/Grafica_de_los_efectos_para_Tiempo_4}}
+	\caption{Resultado último del modelo} \label{fig:resultado_experimento_fraccional_4}
+\end{figure}
+
+Vemos que sólo quedan en el modelo variables significativas: A (clip), D (largo ala), E (largo cuerpo) y la interacción DE (interacción entre el largo del ala y del cuerpo).\\
+
+La salida que devuelve Minitab es la siguiente:
+
+\begin{verbatim}
+Análisis de Varianza
+
+Fuente                         GL  SC Ajust.  MC Ajust.  Valor F  Valor p
+Modelo                          5    5,55313    1,11063    61,80    0,000
+Lineal                        3    3,09826    1,03275    57,47    0,000
+Clip                        1    0,60861    0,60861    33,87    0,000
+Largo_ala                   1    1,90076    1,90076   105,77    0,000
+Largo_cuerpo                1    0,58888    0,58888    32,77    0,000
+Interacciones de 2 términos   1    2,44813    2,44813   136,22    0,000
+Largo_ala*Largo_cuerpo      1    2,44813    2,44813   136,22    0,000
+Curvatura                     1    0,00675    0,00675     0,38    0,544
+Error                          34    0,61103    0,01797
+Total                          39    6,16417
+
+
+Resumen del modelo
+
+R-cuad.  R-cuad.
+S  R-cuad.  (ajustado)   (pred)
+0,134058   90,09%      88,63%   86,28%
+
+
+Coeficientes codificados
+
+EE del
+Término                  Efecto     Coef   coef.  Valor T  Valor p   VIF
+Constante                         1,3542  0,0237    57,14    0,000
+Clip                     0,2467   0,1233  0,0212     5,82    0,000  1,00
+Largo_ala                0,4874   0,2437  0,0237    10,28    0,000  1,00
+Largo_cuerpo            -0,2713  -0,1357  0,0237    -5,72    0,000  1,00
+Largo_ala*Largo_cuerpo  -0,5532  -0,2766  0,0237   -11,67    0,000  1,00
+Pt Ctral                          0,0325  0,0530     0,61    0,544  1,00
+
+
+Ecuación de regresión en unidades no codificadas
+
+Tiempo = -7,090 + 0,1233 Clip + 1,1459 Largo_ala + 0,8930 Largo_cuerpo
+- 0,1229 Largo_ala*Largo_cuerpo + 0,0325 Pt Ctral
+
+
+Ajustes y diagnósticos para observaciones poco comunes
+
+                              Resid
+Obs  Tiempo  Ajuste   Resid   est.
+38  1,6000  1,3090  0,2910   2,35  R
+\end{verbatim}
+
+Vemos que estamos ante un método bastante bueno con un coeficiente de determinación ajustado de 0.8863. Vemos que todos los p-valores de los factores son menores que 0.05, salvo el punto central.\\
+
+Así la ecuación del tiempo de vuelo en función de los demás factores viene dada por la siguiente ecuación:
+
+\begin{multline*}
+\text{Tiempo} = -7.090 + 0.1233 \text{Clip} + 1.1459 \text{Largo\_ala} + 0.8930 \text{Largo\_cuerpo} \\
+- 0.1229 \text{Largo\_ala} \cdot \text{Largo\_cuerpo}
+\end{multline*}
+
+También, sólo se produce una observación poco común, la 38, con una predicción de 1.3090 y observado de 1.6000, una diferencia de 0.2910 segundos.\\
+
+Calculamos los residuos del modelo para ver si se viola alguna de las hipótesis de partida (Figura~\ref{fig:residuos_4}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Experimento_fraccional/Graficas_de_residuos_para_Tiempo_4}
+	\caption{Análisis de residuos para el último modelo}
+	\label{fig:residuos_4}
+\end{figure}
+
+Parece que no se incumple ninguna de las hipótesis de partida.\\
+
+Representamos la gráfica de cubo de este modelo (Figura~\ref{fig:cubo_fraccional}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Experimento_fraccional/Grafica_de_cubos_(medias_ajustadas)_de_Tiempo_4}
+	\caption{Gráfica de cubo}
+	\label{fig:cubo_fraccional}
+\end{figure}
+
+El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm.\\
+
+Para contrastar el modelo, añadimos una segunda mitad para respaldar lo obtenido con el apartado anterior, formando un experimento completo.  Los datos de este experimento se pueden encontrar en el Anexo~\ref{chp:experimentos}.\\
+
+Comenzamos analizando el experimento, obteniéndose las gráficas de Pareto y de efectos normales (Figura~\ref{fig:resultado_experimento_completo_1}).\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de Pareto]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_completo/Pareto_de_los_efectos_para_Tiempo_1}}
+	\subfigure[Gráfica de efectos normales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_completo/Grafica_de_los_efectos_para_Tiempo_1}}
+	\caption{Resultados del experimento completo} \label{fig:resultado_experimento_completo_1}
+\end{figure}
+
+Los factores más significativos son A (clip), D (largo ala), E (largo cuerpo) y la interacción DE (largo del ala y del cuerpo).\\
+
+Intentamos simplificar el modelo anterior añadiendo al modelo sólo los factores e interacciones significativas, esto es, A, D, E y DE.\\
+
+Las gráficas de Pareto y de efectos normales de este nuevo modelo se pueden ver en la Figura~\ref{fig:resultado_experimento_completo_2}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\subfigure[Gráfica de Pareto]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_completo/Pareto_de_los_efectos_para_Tiempo_2}}
+	\subfigure[Gráfica de efectos normales]{\includegraphics[width=0.45\linewidth]{imagenes/Experimento_completo/Grafica_de_los_efectos_para_Tiempo_2}}
+	\caption{Resultados del experimento completo simplificado} \label{fig:resultado_experimento_completo_2}
+\end{figure}
+
+Vemos que todos los factores son significativos. Los resultados que devuelve Minitab son los siguientes:
+
+\begin{verbatim}
+Análisis de Varianza
+
+Fuente                         GL  SC Ajust.  MC Ajust.  Valor F  Valor p
+Modelo                          6    11,6635    1,94391   101,44    0,000
+Bloques                         1     0,0314    0,03144     1,64    0,204
+Lineal                          3     6,6107    2,20356   114,99    0,000
+Clip                            1     0,9267    0,92665    48,36    0,000
+Largo_ala                       1     3,7641    3,76409   196,42    0,000
+Largo_cuerpo                    1     1,9200    1,91996   100,19    0,000
+Interacciones de 2 términos     1     5,0204    5,02040   261,98    0,000
+Largo_ala*Largo_cuerpo          1     5,0204    5,02040   261,98    0,000
+Curvatura                       1     0,0009    0,00091     0,05    0,828
+Error                          73     1,3989    0,01916
+Total                          79    13,0624
+
+
+Resumen del modelo
+
+R-cuad.  R-cuad.
+S  R-cuad.  (ajustado)   (pred)
+0,138431   89,29%      88,41%   87,14%
+
+
+Coeficientes codificados
+
+EE del
+Término                  Efecto     Coef   coef.  Valor T  Valor p   VIF
+Constante                         1,3425  0,0173    77,58    0,000
+Bloques
+1                               0,0198  0,0155     1,28    0,204  1,00
+Clip                     0,2152   0,1076  0,0155     6,95    0,000  1,00
+Largo_ala                0,4850   0,2425  0,0173    14,02    0,000  1,00
+Largo_cuerpo            -0,3464  -0,1732  0,0173   -10,01    0,000  1,00
+Largo_ala*Largo_cuerpo  -0,5602  -0,2801  0,0173   -16,19    0,000  1,00
+Pt Ctral                         -0,0085  0,0387    -0,22    0,828  1,00
+
+Ecuación de regresión en unidades no codificadas
+
+Tiempo = -6,994 + 0,1076 Clip + 1,1575 Largo_ala + 0,8804 Largo_cuerpo
+- 0,12448 Largo_ala*Largo_cuerpo - 0,0085 Pt Ctral
+
+Ecuación promediada sobre los bloques.
+
+Ajustes y diagnósticos para observaciones poco comunes
+
+                              Resid
+Obs  Tiempo  Ajuste    Resid   est.
+38  1,6000  1,2592   0,3408   2,58  R
+47  1,0290  1,2947  -0,2657  -2,01  R
+49  2,1870  1,9109   0,2761   2,09  R
+67  1,1310  0,8657   0,2653   2,01  R
+
+Residuo grande R
+\end{verbatim}
+
+Tenemos un modelo bastante bueno, con un ajuste de 0.8841, y todos los elementos del modelo tienen especial significación (p-valor < 0.05), excepto los puntos centrales, por lo que los descartamos.\\
+
+La ecuación del modelo queda de la siguiente manera:
+
+\begin{multline*}
+\text{Tiempo} = -6.994 + 0.1076 \text{Clip} + 1.1575 \text{Largo\_ala} + 0.8804 \text{Largo\_cuerpo} - 0,12448 \text{Largo\_ala}\cdot \text{Largo\_cuerpo}
+\end{multline*}
+
+Para finalizar, representamos la gráfica de cubo de este modelo.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Experimento_completo/Grafica_de_cubos_(medias_ajustadas)_de_Tiempo}
+	\caption{Gráfica de cubo del experimento completo}
+	\label{fig:cubo_completo}
+\end{figure}
+
+El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm, con un tiempo de vuelo de 2.1459 segundos.\\
+
+Con sendos experimentos, hemos obtenido un modelo de ajuste, bastante parecidos entre ellos. Parece ser que las variables clip, largo del ala y del cuerpo son variables influyentes en el tiempo de vuelo del helicóptero.
+
 \subsection{Optimización del diseño y del proceso de fabricación}
+
+Con todos los datos anteriores, ya estamos en disposición para mejorar el proceso. A tenor de los experimentos anteriores, las variables más influyentes para el tiempo de vuelo del helicóptero son el llevar o no clip, y el largo del ala y del cuerpo. Puesto que las demás variables no parecen tener demasiada influencia en el tiempo de vuelo, las ponemos al coste mínimo. Estas variables son celo del ala y del cuerpo que, a partir de ahora, nuestros helicópteros ya no llevarán (con su correspondiente ahorro), y el ancho del cuerpo que lo ponemos al mínimo de especificación (4 cm).\\
+
+En torno al proceso, eliminamos la fase de pegado donde se pegaba con cinta adhesiva los bordes del cuerpo del helicóptero. Ya no es necesaria esta fase con el nuevo diseño. También eliminamos la fase de inspección, porque no aporta valor añadido al producto.\\
+
+Por tanto, se debe realizar un reajuste en el reparto de los empleados en las diferentes tareas, quedando de la siguiente manera:
+
+\begin{itemize}
+	\item Etapa de corte: 3 personas más medio turno de otra
+	\item Etapa de prueba de vuelo: 4 personas
+	\item Etapa de etiquetado: 2 personas más medio turno de otra
+\end{itemize}
+
+\begin{table}[htbp!]
+	\centering
+	\caption{Número de unidades diarias por tareas (proceso mejorado)}
+	\label{tbl:tiempos_finales}
+	\begin{tabular}{@{}cccc@{}}
+		\toprule
+		Tarea        & \begin{tabular}[c]{@{}c@{}}Tiempo diario\\ (en horas)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Tiempo en realizar tarea\\ por unidad (en segundos)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Número de \\ unidades diarias\end{tabular} \\ \midrule
+		Corte        & 28                                                                 & 55                                                                                          & 1\,832                                                                  \\
+		Prueba vuelo & 32                                                                 & 55                                                                                          & 2\,094                                                                  \\
+		Etiquetado   & 20                                                                 & 35                                                                                          & 2\,057                                                                  \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+Por tanto, la producción diaria teórica es de 1\,832 unidades. Si suponemos un rendimiento del 80\%, tenemos 1\,456 unidades fabricadas diariamente.\\
+
+Mensualmente, tenemos una producción de 54\,960 unidades, lo que hacen unos ingresos totales de 329\,760 euros, a lo que hay que descontar los gastos fijos de los empleados y de mantenimiento, y los costes asociados a cada fase del proceso, tenemos un total de 255\,776 euros mensuales. Por tanto, el beneficio mensual de la empresa es de 73\,984 euros.\\
+
+La Tabla~\ref{tbl:comparativa} muestra una comparativa de los costes y de la producción antes y después de aplicar la metodología Seis Sigma.\\
+
+\begin{table}[htbp!]
+	\centering
+	\caption{Comparativa antes y después de Seis Sigma}
+	\label{tbl:comparativa}
+	\begin{tabular}{@{}ccc@{}}
+		\cmidrule(l){2-3}
+		& Antes             & Después          \\ \midrule
+		Coste helicóptero  & 6 euros           & 6 euros          \\
+		Producción diaria  & 987 unidades      & 1\,456 unidades  \\
+		Producción mensual & 29\,616  unidades & 54\,960 unidades \\
+		Ingresos mensuales & 117\,696 euros    & 329\,760 euros   \\
+		Gastos mensuales   & 158\,445 euros    & 255\,776 euros   \\
+		Beneficio mensual  & -40\,749 euros    & 73\,984 euros    \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+Por último, sólo nos queda calcular el diseño óptimo para lograr nuestro objetivo de lograr 1 de cada 2\,000 helicópteros que no cumplan el tiempo de vuelo especificado (> 1 segundo). Si lo calculamos sobre 1\,000\,000 de helicópteros deberíamos tener 500 que no lo cumplan. Es decir, nuestro proceso debería tener 4 sigmas para que esto se cumpliera \cite{Sigma}. Tomamos como desviación típica 0.4 del último experimento. Así el objetivo es 1+4*0.4 = 2.6 segundos.\\
+
+Usando el optimizador de respuesta de Minitab, fijamos ese objetivos para obtener los valores de las variables óptimos para ese valor. Ejecutándolo nos devuelve que el tamaño óptimo es el de no usar clip, el largo del ala es de 9.5 cm y el largo del cuerpo es de 6.5 cm, logrando un tiempo de vuelo de 2.10 segundos. 
+ 
 
 \section{Control}
 
 \section{Conclusiones}
+
+%\bibliographystyle{plain}
+%\bibliography{bibliografia}
+
+\begin{appendices}
+	\section{Datos de los experimentos} \label{chp:experimentos}
+\end{appendices}
 
 
 
