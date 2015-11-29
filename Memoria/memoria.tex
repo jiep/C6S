@@ -143,19 +143,20 @@ Teniendo en cuenta los tiempos diarios dedicados a cada tarea (sumando a todos l
 	\end{tabular}
 \end{table} 
 
-A la vista de la Tabla~\ref{tbl:tiempos} tenemos una producción de 1\,234 unidades diarias, que al mes son 37\,028 unidades.\\
+A la vista de la Tabla~\ref{tbl:tiempos} tenemos una producción teórica de 1\,234 unidades diarias. Suponiendo un rendimiento del 80\%, tenemos 987 unidades diarias, que mensualmente son 29\,616 unidades.\\
 
-Estas 37\,028 suponen unos ingresos de 222\,168 € mensuales.\\
+Estas 29\,616 suponen unos ingresos de 117\,696 € mensuales.\\
 
-Los costes mensuales asociados son de 220\,400 €.\\
+Los costes mensuales asociados son de 158\,445 €.\\
 
-Por tanto, el beneficio mensual es de 1\,768.2 €.\\
+Por tanto, el beneficio mensual es de -40\,749 €, por lo que es imprescindible mejorar la calidad del proceso de fabricación de helicópteros si no queremos que la empresa cese su actividad.\\
 
 Los objetivos generales del proyecto son los siguientes:
 
 \begin{itemize}
 	\item El tiempo de vuelo debe ser mayor de 1 segundo. Sólo 1 de cada 2000 helicópteros podrá no cumplir este requisito de calidad.
-	\item El coste de producción debe ser mínimo
+	\item El coste de producción debe ser mínimo.
+	\item El peso de los helicópteros debe ser mínimo (éste el objetivo menos importante de los tres). 
 \end{itemize} 
 
 
@@ -203,7 +204,7 @@ Para representar el diagrama del proceso de alto nivel, debemos identificar las 
 	\label{fig:diagrama_proceso_actual_altoç_nivel}
 \end{figure} 
 
-Para representar el diagrama del proceso actual, debemos identificar las fases de las que consta el proceso. Éstas son: aprovisionamiento de materia prima, montaje, prueba de vuelo y etiquetado. 
+Para representar el diagrama del proceso actual, debemos identificar las fases de las que consta el proceso. Éstas son: aprovisionamiento de materia prima, montaje, prueba de vuelo y etiquetado.\\
 
 En la fase de aprovisionamiento tenemos como entrada el papel que nos proporcionan, donde un empleado revisa cada hoja midiendo el ancho del patrón y descarta los que no cumplan el criterio (12 $\pm$ 0.1 cm).\\
 
@@ -552,9 +553,9 @@ Ya estamos en disposición de calcular la capacidad del proceso actual. El resul
 
 Vemos que nuestro proceso tiene 1.26 sigmas, por lo que tenemos un gran margen de mejora en el proceso actual. Si siguiéramos con este proceso a largo plazo, nuestro proceso mejoraría hasta las 1.42 sigmas, insuficiente para los objetivos que marca el cliente.\\
 
-Antes de analizar las causas que influyen en el tiempo de vuelo de nuestro helicóptero, debemos determinar las causas que pueden afectar al tiempo de vuelo. Para ello, aplicamos la regla de las 6 M's (mediciones, material, personal, medio ambiente, métodos y máquinas)\\
+Antes de analizar las causas que influyen en el tiempo de vuelo de nuestro helicóptero, debemos determinar las causas que pueden afectar al tiempo de vuelo. Para ello, aplicamos la regla de las 6 M's (mediciones, material, mano de obra (personal), medio ambiente, métodos y máquinas).\\
 
-En el grupo de las mediciones identificamos como causas el largo de ala, el ancho del cuerpo y largo del cuerpo. En material identificamos la calidad y el peso. En personal, la experiencia, la motivación y la formación. En el medio ambiente, la velocidad del viento. En métodos la calidad del corte, del doblado y del pegado y la prueba de vuelo. Por último, en máquinas identificamos la edad y el mantenimiento. Todo esto se puede ver de forma gráfica en el diagrama de causas y efectos o diagrama de Ishikawa (Figura~\ref{fig:causa_efecto}).\\
+En el grupo de las mediciones identificamos como causas el largo de ala, el ancho del cuerpo y largo del cuerpo. En material identificamos la calidad y el peso. En personal, la experiencia, la motivación y la formación. En el medio ambiente, la velocidad del viento. En métodos, la calidad del corte, del doblado y del pegado y la prueba de vuelo. Por último, en máquinas identificamos la edad y el mantenimiento. Todo esto se puede ver de forma gráfica en el diagrama de causas y efectos o diagrama de Ishikawa (Figura~\ref{fig:causa_efecto}).\\
 
 
 \begin{figure}[htbp!]
@@ -567,7 +568,7 @@ En el grupo de las mediciones identificamos como causas el largo de ala, el anch
 
 \section{Análisis gráfico}
 
-Con las causas definidas que pueden causar las variaciones en el tiempo de vuelo de nuestros helicópteros, procedemos a analizar tanto desde un punto gráfico como numérico. Sólo nos centraremos en las condiciones de diseño (largo del ala, largo del cuerpo, ancho del cuerpo, si tiene clip o no, etc) y los operarios. Las causas como el mantenimiento de las herramientas o la edad las consideramos irrelevantes para el tiempo de vuelo.\\
+Con las causas definidas que pueden causar las variaciones en el tiempo de vuelo de nuestros helicópteros, procedemos a analizar tanto desde un punto gráfico como numérico. Sólo nos centraremos en las condiciones de diseño (largo del ala, largo del cuerpo, ancho del cuerpo, si tiene clip o no, etc) y los operarios. Las causas como el mantenimiento de las herramientas o la edad las consideramos irrelevantes o muy poco influyentes para el tiempo de vuelo.\\
 
 Con los datos recogidos para el sistema de medición (Tabla~\ref{tbl:tiempos_operario}) y para la capacidad del proceso (Tabla~\ref{tbl:tiempos_capacidad}) analizamos de forma gráfica estos datos con la ayuda de Minitab.\\
 
@@ -591,7 +592,7 @@ Ahora, podemos comprobar los efectos de cada factor (prototipo y operario) sobre
 	\label{fig:efectos_principales}
 \end{figure}
 
-Se puede observar que entre los tiempos medios de vuelo para cada uno de los operarios (A, B, C) no hay una gran diferencia, lo que hace indicar que el operario que realice el helicóptero apenas influye en el tiempo de vuelo. Sin embargo, en los tiempos medios según el prototipo, existen grandes diferencias de tiempo. El que más sobresale es el prototipo número 3, que parece indicar que la combinación de las variables de diseño (longitud del ala, longitud del cuerpo, anchura del cuerpo, con clip o sin clip, etc) parece influir bastante en el tiempo de vuelo.\\
+Se puede observar que entre los tiempos medios de vuelo para cada uno de los operarios (A, B, C) no hay una gran diferencia, lo que hace indicar que el operario que realice el helicóptero apenas influye en el tiempo de vuelo. Sin embargo, en los tiempos medios según el prototipo, existen grandes diferencias de tiempo. El que más sobresale es el prototipo número 3, que parece indicar que la combinación de las variables de diseño (longitud del ala, longitud del cuerpo, anchura del cuerpo, con clip o sin clip, etc) parecen influir bastante en el tiempo de vuelo.\\
 
 A continuación, analizamos el tiempo de vuelo según el prototipo realizando gráficas de efectos principales como en el caso anterior (Figura~\ref{fig:efectos_principales_prototipos}).
 
@@ -603,7 +604,7 @@ A continuación, analizamos el tiempo de vuelo según el prototipo realizando gr
 	\caption{Diagrama de efectos principales para el tiempo según el tipo de prototipo} \label{fig:efectos_principales_prototipos}
 \end{figure}
 
-Observamos que los tiempos según el tipo de prototipo, sí parece estar influido por el operario que realizó el helicóptero. En el caso del prototipo 1, el mayor tiempo medio se consiguió con el operario A, aunque todos cumplen con el objetivo mínimo del tiempo de vuelo fijado por el cliente. En el prototipo 2, de nuevo, el mayor tiempo de vuelo se consigue con el operario A, pero con los operarios B y C no se consigue el objetivo mínimo de 1 segundo de vuelo. Por último, con el prototipo 3, se cumple de sobra con el objetivo mínimo de tiempo de vuelo, y con el operario A se realizan los mejores tiempos de vuelo. Parece que el operario A es el que mejor realiza los helicóptero, ya que con él se consiguen los mejores tiempos de vuelo (independientemente del prototipo elegido).\\
+Observamos que los tiempos según el tipo de prototipo, sí parece estar influido por el operario que realizó el helicóptero. En el caso del prototipo 1, el mayor tiempo medio se consiguió con el operario A, aunque todos cumplen con el objetivo mínimo del tiempo de vuelo fijado por el cliente. En el prototipo 2, de nuevo, el mayor tiempo de vuelo se consigue con el operario A, pero con los operarios B y C no se consigue el objetivo mínimo de 1 segundo de vuelo. Por último, con el prototipo 3, se cumple de sobra con el objetivo mínimo de tiempo de vuelo, y con el operario A se realizan los mejores tiempos de vuelo. Parece que el operario A es el que mejor realiza los helicópteros, ya que con él se consiguen los mejores tiempos de vuelo (independientemente del prototipo elegido).\\
 
 A continuación, analizamos la capacidad de cada uno de los procesos si sólo fabricáramos un solo tipo de prototipo (Figura~\ref{fig:capacidad_prototipos}).\\
 
@@ -693,7 +694,7 @@ IC de 95% para la diferencia:  (-1,520; -0,891)
 Prueba T de diferencia = 0 (vs. ≠): Valor T = -9,07                               Valor p = 0,000  GL = 7
 \end{verbatim}
 
-Es decir, p-valor = 0.000 < 0.05, por lo que rechazamos $H_0$ y existen diferencias significativas entre los tiempos de vuelo de los helicópteros cuando llevan o no llevan un clip. Es más, cuando no lo llevan el tiempo de vuelo es mayor: de media será 1.205 segundos y en el 95\% de los casos estará entre 0.891 y 1.5220 segundos más que no llevar clip.\\
+Es decir, p-valor = 0.000 < 0.05, por lo que rechazamos $H_0$ y existen diferencias significativas entre los tiempos de vuelo de los helicópteros cuando llevan o no llevan un clip. Es más, cuando no lo llevan el tiempo de vuelo es mayor: de media tendrán 1.205 segundos más de vuelo que los que lo llevan y en el 95\% de los casos estará entre 0.891 y 1.5220 segundos más que los que no lo llevan.\\
 
 Ahora analizaremos si la longitud del cuerpo influye en el tiempo de vuelo. Tenemos dos medidas de la longitud del cuerpo: 6.5 y 8.0 cm. El constaste de hipótesis en el siguiente:
 
@@ -1202,13 +1203,13 @@ Análisis de Varianza
 
 Fuente                         GL  SC Ajust.  MC Ajust.  Valor F  Valor p
 Modelo                          5    5,55313    1,11063    61,80    0,000
-Lineal                        3    3,09826    1,03275    57,47    0,000
-Clip                        1    0,60861    0,60861    33,87    0,000
-Largo_ala                   1    1,90076    1,90076   105,77    0,000
-Largo_cuerpo                1    0,58888    0,58888    32,77    0,000
-Interacciones de 2 términos   1    2,44813    2,44813   136,22    0,000
-Largo_ala*Largo_cuerpo      1    2,44813    2,44813   136,22    0,000
-Curvatura                     1    0,00675    0,00675     0,38    0,544
+Lineal                          3    3,09826    1,03275    57,47    0,000
+Clip                            1    0,60861    0,60861    33,87    0,000
+Largo_ala                       1    1,90076    1,90076   105,77    0,000
+Largo_cuerpo                    1    0,58888    0,58888    32,77    0,000
+Interacciones de 2 términos     1    2,44813    2,44813   136,22    0,000
+Largo_ala*Largo_cuerpo          1    2,44813    2,44813   136,22    0,000
+Curvatura                       1    0,00675    0,00675     0,38    0,544
 Error                          34    0,61103    0,01797
 Total                          39    6,16417
 
@@ -1276,7 +1277,7 @@ Representamos la gráfica de cubo de este modelo (Figura~\ref{fig:cubo_fracciona
 	\label{fig:cubo_fraccional}
 \end{figure}
 
-El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm.\\
+El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm. Todos los valores se encuentran por encima de 1 segundo (el vuelo mínimo), salvo en el caso de no llevar clip y la longitud del ala y del cuerpo es de 6.5 cm. que se queda en 0.846 segundos.\\
 
 Para contrastar el modelo, añadimos una segunda mitad para respaldar lo obtenido con el apartado anterior, formando un experimento completo.  Los datos de este experimento se pueden encontrar en el Anexo~\ref{chp:experimentos}.\\
 
@@ -1365,7 +1366,7 @@ Tenemos un modelo bastante bueno, con un ajuste de 0.8841, y todos los elementos
 La ecuación del modelo queda de la siguiente manera:
 
 \begin{multline*}
-\text{Tiempo} = -6.994 + 0.1076 \text{Clip} + 1.1575 \text{Largo\_ala} + 0.8804 \text{Largo\_cuerpo} - 0,12448 \text{Largo\_ala}\cdot \text{Largo\_cuerpo}
+\text{Tiempo} = -6.994 + 0.1076 \text{Clip} + 1.1575 \text{Largo\_ala} + 0.8804 \text{Largo\_cuerpo} \\ - 0,12448 \text{Largo\_ala}\cdot \text{Largo\_cuerpo}
 \end{multline*}
 
 Para finalizar, representamos la gráfica de cubo de este modelo.\\
@@ -1377,7 +1378,7 @@ Para finalizar, representamos la gráfica de cubo de este modelo.\\
 	\label{fig:cubo_completo}
 \end{figure}
 
-El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm, con un tiempo de vuelo de 2.1459 segundos.\\
+El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm, con un tiempo de vuelo de 2.1459 segundos. Y de nuevo, se obtienen en todos los casos un tiempo de vuelo superior al segundo, salvo cuando se lleva clip y las longitudes del ala y del cuerpo son de 6.5 cm.\\
 
 Con sendos experimentos, hemos obtenido un modelo de ajuste, bastante parecidos entre ellos. Parece ser que las variables clip, largo del ala y del cuerpo son variables influyentes en el tiempo de vuelo del helicóptero.
 
