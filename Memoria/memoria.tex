@@ -12,6 +12,8 @@
 \usepackage{microtype}
 \usepackage{ifdraft}
 \usepackage{verbatim}
+\usepackage[nottoc]{tocbibind}
+\usepackage{pdflscape}
 \usepackage[obeyDraft]{todonotes}
 \ifdraft{
 	\usepackage{draftwatermark}
@@ -270,7 +272,8 @@ El diagrama completo del proceso actual se puede ver en la Figura~\ref{fig:diagr
 	
 	\node[text width=5cm, align=center] at (salidas.center){Helicóptero};
 	
-	
+	\draw (0,-10.7) -- (3,-10.7) node[right]{tiempo de vuelo};
+	\draw (0,-7.5) -- (1,-7.5) node[right]{peso};
 	
 	% Flechas
 	
@@ -1069,7 +1072,7 @@ Por tanto, hay al menos tres variables que influyen en el tiempo de vuelo: lleva
 
 A continuación realizaremos una serie de experimentos para conocer las variables más significativas y las interacciones entre ellas que más influyen en el tiempo de vuelo de los helicópteros. Para ello, realizaremos dos experimentos: uno fraccional con fracción 1/2 y uno completo. Ambos experimentos tienen 6 factores con puntos centrales (entre paréntesis se indican los niveles): clip (sí, no), celo ala (sí, no), celo cuerpo (sí, no), largo ala (6.5, 9.5), largo cuerpo (6.5, 9.5)  y ancho cuerpo (4, 6).\\
 
-Comenzaremos por el experimentos fraccional. Se trata, como hemos comentado anteriormente, de un diseño fraccional con fracción 1/2 con 6 factores. Los datos de este experimento se pueden ver el Anexo~\ref{chp:experimentos}. Analizamos el diseño factorial con la ayuda de Minitab. Los resultados de la salida (simplificada por su gran longitud) son los siguientes:
+Comenzaremos por el experimentos fraccional. Se trata, como hemos comentado anteriormente, de un diseño fraccional con fracción 1/2 con 6 factores. Los datos de este experimento se pueden ver el Apéndice~\ref{chp:experimentos}. Analizamos el diseño factorial con la ayuda de Minitab. Los resultados de la salida (simplificada por su gran longitud) son los siguientes:
 
 \begin{verbatim}
 ... (simplificado por brevedad)
@@ -1279,7 +1282,7 @@ Representamos la gráfica de cubo de este modelo (Figura~\ref{fig:cubo_fracciona
 
 El mayor tiempo de vuelo se consigue cuando no lleva clip, largo del ala de 9.5 cm y largo del cuerpo de 6.5 cm. Todos los valores se encuentran por encima de 1 segundo (el vuelo mínimo), salvo en el caso de no llevar clip y la longitud del ala y del cuerpo es de 6.5 cm. que se queda en 0.846 segundos.\\
 
-Para contrastar el modelo, añadimos una segunda mitad para respaldar lo obtenido con el apartado anterior, formando un experimento completo.  Los datos de este experimento se pueden encontrar en el Anexo~\ref{chp:experimentos}.\\
+Para contrastar el modelo, añadimos una segunda mitad para respaldar lo obtenido con el apartado anterior, formando un experimento completo.  Los datos de este experimento se pueden encontrar en el Apéndice~\ref{chp:experimentos}.\\
 
 Comenzamos analizando el experimento, obteniéndose las gráficas de Pareto y de efectos normales (Figura~\ref{fig:resultado_experimento_completo_1}).\\
 
@@ -1438,17 +1441,233 @@ Usando el optimizador de respuesta de Minitab, fijamos ese objetivos para obtene
 
 \section{Control}
 
-Puesto que las variables que más afectan al tiempo de vuelo son la longitud de las alas y del cuerpo, debemos establecer métodos que nos permitan reducir la variabilidad del tiempo de vuelo de los helicópteros. Un método puede ser mejorar las herramientas de corte. Con unas herramientas más precisas se conseguirá que se reduzca al mínimo la cantidad de helicópteros defectuosos (tiempo de vuelo menor que 1 segundo) y mejorar la satisfacción del cliente, mejorando a su vez, la confianza depositada en Parasafe S.A. 
+Calculamos, con las nuevas especificaciones de diseño del helicóptero, la capacidad del nuevo proceso. Para ello, tomamos 10 tiempos de vuelo de los nuevos helicópteros. Estos tiempos se pueden ver en la Tabla~\ref{tbl:capcidad_final}.\\
+
+\begin{table}[htbp!]
+\centering
+\caption{Tiempos para calcular la capacidad del proceso después de aplicar la metodología Seis Sigma}
+\label{tbl:capcidad_final}
+\begin{tabular}{@{}c@{}}
+\toprule
+Tiempo \\ \midrule
+1.983  \\
+2.027  \\
+2.255  \\
+2.298  \\
+1.800  \\
+1.888  \\
+1.890  \\
+2.289  \\
+2.374  \\
+1.839  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+La nueva capacidad del proceso se puede ver en la Figura~\ref{fig:capacidad_final}.\\
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/Capacidad_final}
+	\caption{Capacidad del proceso tras aplicar la metodología Seis Sigma}
+	\label{fig:capacidad_final}
+\end{figure}
+
+Vemos que la capacidad del nuevo proceso es superior a la capacidad pedida por el cliente (4 sigma por 4.88 sigma del proceso nuevo). Esto puede ser debido a la reducción de la variabilidad de los tiempos de vuelo con respecto a los tiempos del último experimento.\\ 
+
+Puesto que las variables que más afectan al tiempo de vuelo son la longitud de las alas y del cuerpo, debemos establecer métodos que nos permitan reducir la variabilidad del tiempo de vuelo de los helicópteros para llegar, en un futuro, a las 6 sigmas del proceso (3.4 helicópteros con tiempo de vuelo inferior a 1 segundo por cada millón de helicópteros fabricados). Un método puede ser mejorar las herramientas de corte. Con unas herramientas más precisas se conseguirá que se reduzca al mínimo la cantidad de helicópteros defectuosos y mejorar la satisfacción del cliente, mejorando a su vez, la confianza depositada en Parasafe S.A.\\
+
+Otro método a considerar es el de incorporar instrumentos de medida más precisos en la etapa de vuelo, incluso llegando a automatizar el proceso de prueba de vuelo. De esta forma se conseguirán más exactitud en el tiempo de vuelo y aumentando la producción. A cambio, habrá que formar a los empleados con las nuevas herramientas de medida.
 
 \section{Conclusiones}
 
-Con la ayuda de la metodología Seis Sigma (DMAIC) hemos conseguido mejorar el proceso de fabricación y diseño de los helicópteros de papel. Empleando técnicas estadísticas clásicas bien conocidas como el diseño de experimentos, los contrastes de hipótesis o ANOVA se ha conseguido una mejora sustancial en el proceso, ahorrando una gran cantidad de dinero y tiempo.
+Con la ayuda de la metodología Seis Sigma (DMAIC) hemos conseguido mejorar el proceso de fabricación y diseño de los helicópteros de papel. Lo hemos logrado empleando técnicas estadísticas clásicas bien conocidas como el diseño de experimentos, los contrastes de hipótesis o ANOVA consiguiendo una mejora sustancial en el proceso, ahorrando una gran cantidad de dinero y tiempo. Estas medidas han sido reducir las partes inncesarias del proceso y optimizar el diseño de los helicópteros para lograr los requisitos de calidad del cliente, que era que sólo 1 de cada 2\,000 helicópteros no pudiera superar el tiempo mínimo de vuelo de 1 segundo y la reducción al mínimo del peso. 
 
-%\bibliographystyle{plain}
-%\bibliography{bibliografia}
+\bibliographystyle{plain}
+\bibliography{bibliografia}
 
 \begin{appendices}
 	\section{Datos de los experimentos} \label{chp:experimentos}
+	
+		En las Tablas~\ref{tbl:exp_fraccionario}~y~\ref{tbl:exp_completo} se muestran los datos de los experimentos fraccional como completo para analizar el tiempo de vuelo de los helicópteros. 
+	
+		\begin{landscape}
+			\small  % Switch from 12pt to 11pt; otherwise, table won't fit
+			\setlength\LTleft{0pt}            % default: \parindent
+			\setlength\LTright{0pt} 
+			\begin{center}
+				\begin{longtable}{@{\extracolsep{\fill}}*{11}{c}}
+					\caption{Tiempos del experimento fraccionario}\\
+					\label{tbl:exp_fraccionario} \\
+					\hline
+					OrdenEst & OrdenCorrida & PtCentral & Bloques & Clip & Celo\_ala & Celo\_cuerpo & Largo\_ala & Largo\_cuerpo & Ancho\_cuerpo & Tiempo \\
+					\hline
+					\endfirsthead
+					\multicolumn{11}{c}%
+					{\tablename\ \thetable\ -- \textit{Continúa de la página anterior}} \\
+					\hline
+					OrdenEst & OrdenCorrida & PtCentral & Bloques & Clip & Celo\_ala & Celo\_cuerpo & Largo\_ala & Largo\_cuerpo & Ancho\_cuerpo & Tiempo \\
+					\hline
+					\endhead
+					\hline \multicolumn{11}{r}{\textit{Continúa en la página siguiente}} \\
+					\endfoot
+					\hline
+					\endlastfoot
+					
+					24       & 1            & 1         & 1       & no   & no        & no           & 6.5        & 9.5           & 4             & 1.55   \\
+					16       & 2            & 1         & 1       & no   & no        & no           & 9.5        & 6.5           & 4             & 2.186  \\
+					10       & 3            & 1         & 1       & no   & si        & si           & 9.5        & 6.5           & 4             & 1.993  \\
+					4        & 4            & 1         & 1       & no   & no        & si           & 6.5        & 6.5           & 4             & 0.986  \\
+					6        & 5            & 1         & 1       & no   & si        & no           & 6.5        & 6.5           & 4             & 1.19   \\
+					38       & 6            & 0         & 1       & no   & si        & no           & 8          & 8             & 5             & 1.63   \\
+					15       & 7            & 1         & 1       & si   & no        & no           & 9.5        & 6.5           & 6             & 1.784  \\
+					1        & 8            & 1         & 1       & si   & si        & si           & 6.5        & 6.5           & 4             & 0.884  \\
+					20       & 9            & 1         & 1       & no   & no        & si           & 6.5        & 9.5           & 6             & 1.207  \\
+					39       & 10           & 0         & 1       & si   & no        & no           & 8          & 8             & 5             & 1.401  \\
+					17       & 11           & 1         & 1       & si   & si        & si           & 6.5        & 9.5           & 6             & 0.946  \\
+					35       & 12           & 0         & 1       & si   & no        & si           & 8          & 8             & 5             & 1.148  \\
+					8        & 13           & 1         & 1       & no   & no        & no           & 6.5        & 6.5           & 6             & 1.16   \\
+					30       & 14           & 1         & 1       & no   & si        & no           & 9.5        & 9.5           & 4             & 1.224  \\
+					12       & 15           & 1         & 1       & no   & no        & si           & 9.5        & 6.5           & 6             & 2.173  \\
+					14       & 16           & 1         & 1       & no   & si        & no           & 9.5        & 6.5           & 6             & 2.13   \\
+					2        & 17           & 1         & 1       & no   & si        & si           & 6.5        & 6.5           & 6             & 0.878  \\
+					5        & 18           & 1         & 1       & si   & si        & no           & 6.5        & 6.5           & 6             & 0.863  \\
+					34       & 19           & 0         & 1       & no   & si        & si           & 8          & 8             & 5             & 1.451  \\
+					7        & 20           & 1         & 1       & si   & no        & no           & 6.5        & 6.5           & 4             & 0.88   \\
+					23       & 21           & 1         & 1       & si   & no        & no           & 6.5        & 9.5           & 6             & 1.065  \\
+					37       & 22           & 0         & 1       & si   & si        & no           & 8          & 8             & 5             & 1.284  \\
+					40       & 23           & 0         & 1       & no   & no        & no           & 8          & 8             & 5             & 1.283  \\
+					11       & 24           & 1         & 1       & si   & no        & si           & 9.5        & 6.5           & 4             & 2.024  \\
+					13       & 25           & 1         & 1       & si   & si        & no           & 9.5        & 6.5           & 4             & 2.044  \\
+					21       & 26           & 1         & 1       & si   & si        & no           & 6.5        & 9.5           & 4             & 1.244  \\
+					32       & 27           & 1         & 1       & no   & no        & no           & 9.5        & 9.5           & 6             & 1.102  \\
+					22       & 28           & 1         & 1       & no   & si        & no           & 6.5        & 9.5           & 6             & 1.529  \\
+					19       & 29           & 1         & 1       & si   & no        & si           & 6.5        & 9.5           & 4             & 1.045  \\
+					9        & 30           & 1         & 1       & si   & si        & si           & 9.5        & 6.5           & 6             & 1.747  \\
+					28       & 31           & 1         & 1       & no   & no        & si           & 9.5        & 9.5           & 4             & 1.349  \\
+					33       & 32           & 0         & 1       & si   & si        & si           & 8          & 8             & 5             & 1.262  \\
+					27       & 33           & 1         & 1       & si   & no        & si           & 9.5        & 9.5           & 6             & 0.904  \\
+					31       & 34           & 1         & 1       & si   & no        & no           & 9.5        & 9.5           & 4             & 1.038  \\
+					29       & 35           & 1         & 1       & si   & si        & no           & 9.5        & 9.5           & 6             & 1.164  \\
+					3        & 36           & 1         & 1       & si   & no        & si           & 6.5        & 6.5           & 6             & 0.915  \\
+					25       & 37           & 1         & 1       & si   & si        & si           & 9.5        & 9.5           & 4             & 1.104  \\
+					26       & 38           & 1         & 1       & no   & si        & si           & 9.5        & 9.5           & 6             & 1.6    \\
+					36       & 39           & 0         & 1       & no   & no        & si           & 8          & 8             & 5             & 1.634  \\
+					18       & 40           & 1         & 1       & no   & si        & si           & 6.5        & 9.5           & 4             & 1.425  \\
+					
+				\end{longtable}
+			\end{center}
+		\end{landscape}
+		
+		
+		
+				\begin{landscape}
+					\small  % Switch from 12pt to 11pt; otherwise, table won't fit
+					\setlength\LTleft{0pt}            % default: \parindent
+					\setlength\LTright{0pt} 
+					\begin{center}
+						\begin{longtable}{@{\extracolsep{\fill}}*{11}{c}}
+							\caption{Tiempos del experimento completo}\\
+							\label{tbl:exp_completo} \\
+							\hline
+							OrdenEst & OrdenCorrida & PtCentral & Bloques & Clip & Celo\_ala & Celo\_cuerpo & Largo\_ala & Largo\_cuerpo & Ancho\_cuerpo & Tiempo \\
+							\hline
+							\endfirsthead
+							\multicolumn{11}{c}%
+							{\tablename\ \thetable\ -- \textit{Continúa de la página anterior}} \\
+							\hline
+							OrdenEst & OrdenCorrida & PtCentral & Bloques & Clip & Celo\_ala & Celo\_cuerpo & Largo\_ala & Largo\_cuerpo & Ancho\_cuerpo & Tiempo \\
+							\hline
+							\endhead
+							\hline \multicolumn{11}{r}{\textit{Continúa en la página siguiente}} \\
+							\endfoot
+							\hline
+							\endlastfoot
+							
+							24       & 1            & 1         & 1       & no   & no        & no           & 6.5        & 9.5           & 4             & 1.55   \\
+							16       & 2            & 1         & 1       & no   & no        & no           & 9.5        & 6.5           & 4             & 2.186  \\
+							10       & 3            & 1         & 1       & no   & si        & si           & 9.5        & 6.5           & 4             & 1.993  \\
+							4        & 4            & 1         & 1       & no   & no        & si           & 6.5        & 6.5           & 4             & 0.986  \\
+							6        & 5            & 1         & 1       & no   & si        & no           & 6.5        & 6.5           & 4             & 1.19   \\
+							38       & 6            & 0         & 1       & no   & si        & no           & 8          & 8             & 5             & 1.63   \\
+							15       & 7            & 1         & 1       & si   & no        & no           & 9.5        & 6.5           & 6             & 1.784  \\
+							1        & 8            & 1         & 1       & si   & si        & si           & 6.5        & 6.5           & 4             & 0.884  \\
+							20       & 9            & 1         & 1       & no   & no        & si           & 6.5        & 9.5           & 6             & 1.207  \\
+							39       & 10           & 0         & 1       & si   & no        & no           & 8          & 8             & 5             & 1.401  \\
+							17       & 11           & 1         & 1       & si   & si        & si           & 6.5        & 9.5           & 6             & 0.946  \\
+							35       & 12           & 0         & 1       & si   & no        & si           & 8          & 8             & 5             & 1.148  \\
+							8        & 13           & 1         & 1       & no   & no        & no           & 6.5        & 6.5           & 6             & 1.16   \\
+							30       & 14           & 1         & 1       & no   & si        & no           & 9.5        & 9.5           & 4             & 1.224  \\
+							12       & 15           & 1         & 1       & no   & no        & si           & 9.5        & 6.5           & 6             & 2.173  \\
+							14       & 16           & 1         & 1       & no   & si        & no           & 9.5        & 6.5           & 6             & 2.13   \\
+							2        & 17           & 1         & 1       & no   & si        & si           & 6.5        & 6.5           & 6             & 0.878  \\
+							5        & 18           & 1         & 1       & si   & si        & no           & 6.5        & 6.5           & 6             & 0.863  \\
+							34       & 19           & 0         & 1       & no   & si        & si           & 8          & 8             & 5             & 1.451  \\
+							7        & 20           & 1         & 1       & si   & no        & no           & 6.5        & 6.5           & 4             & 0.88   \\
+							23       & 21           & 1         & 1       & si   & no        & no           & 6.5        & 9.5           & 6             & 1.065  \\
+							37       & 22           & 0         & 1       & si   & si        & no           & 8          & 8             & 5             & 1.284  \\
+							40       & 23           & 0         & 1       & no   & no        & no           & 8          & 8             & 5             & 1.283  \\
+							11       & 24           & 1         & 1       & si   & no        & si           & 9.5        & 6.5           & 4             & 2.024  \\
+							13       & 25           & 1         & 1       & si   & si        & no           & 9.5        & 6.5           & 4             & 2.044  \\
+							21       & 26           & 1         & 1       & si   & si        & no           & 6.5        & 9.5           & 4             & 1.244  \\
+							32       & 27           & 1         & 1       & no   & no        & no           & 9.5        & 9.5           & 6             & 1.102  \\
+							22       & 28           & 1         & 1       & no   & si        & no           & 6.5        & 9.5           & 6             & 1.529  \\
+							19       & 29           & 1         & 1       & si   & no        & si           & 6.5        & 9.5           & 4             & 1.045  \\
+							9        & 30           & 1         & 1       & si   & si        & si           & 9.5        & 6.5           & 6             & 1.747  \\
+							28       & 31           & 1         & 1       & no   & no        & si           & 9.5        & 9.5           & 4             & 1.349  \\
+							33       & 32           & 0         & 1       & si   & si        & si           & 8          & 8             & 5             & 1.262  \\
+							27       & 33           & 1         & 1       & si   & no        & si           & 9.5        & 9.5           & 6             & 0.904  \\
+							31       & 34           & 1         & 1       & si   & no        & no           & 9.5        & 9.5           & 4             & 1.038  \\
+							29       & 35           & 1         & 1       & si   & si        & no           & 9.5        & 9.5           & 6             & 1.164  \\
+							3        & 36           & 1         & 1       & si   & no        & si           & 6.5        & 6.5           & 6             & 0.915  \\
+							25       & 37           & 1         & 1       & si   & si        & si           & 9.5        & 9.5           & 4             & 1.104  \\
+							26       & 38           & 1         & 1       & no   & si        & si           & 9.5        & 9.5           & 6             & 1.6    \\
+							36       & 39           & 0         & 1       & no   & no        & si           & 8          & 8             & 5             & 1.634  \\
+							18       & 40           & 1         & 1       & no   & si        & si           & 6.5        & 9.5           & 4             & 1.425  \\
+							64       & 41           & 1         & 2       & si   & si        & si           & 9.5        & 6.5           & 6             & 2.124  \\
+							56       & 42           & 1         & 2       & si   & si        & si           & 6.5        & 9.5           & 6             & 0.952  \\
+							50       & 43           & 1         & 2       & si   & no        & no           & 6.5        & 9.5           & 6             & 1.196  \\
+							44       & 44           & 1         & 2       & si   & si        & no           & 9.5        & 9.5           & 6             & 0.959  \\
+							46       & 45           & 1         & 2       & si   & no        & si           & 9.5        & 9.5           & 6             & 0.864  \\
+							78       & 46           & 0         & 2       & no   & si        & no           & 8          & 8             & 5             & 1.399  \\
+							55       & 47           & 1         & 2       & no   & si        & si           & 6.5        & 9.5           & 4             & 1.029  \\
+							41       & 48           & 1         & 2       & no   & no        & no           & 9.5        & 9.5           & 6             & 1.367  \\
+							60       & 49           & 1         & 2       & si   & si        & no           & 9.5        & 6.5           & 4             & 2.187  \\
+							79       & 50           & 0         & 2       & si   & no        & no           & 8          & 8             & 5             & 1.014  \\
+							57       & 51           & 1         & 2       & no   & no        & no           & 9.5        & 6.5           & 4             & 2.289  \\
+							75       & 52           & 0         & 2       & si   & no        & si           & 8          & 8             & 5             & 1.173  \\
+							48       & 53           & 1         & 2       & si   & si        & si           & 9.5        & 9.5           & 4             & 0.763  \\
+							70       & 54           & 1         & 2       & si   & no        & si           & 6.5        & 6.5           & 6             & 0.87   \\
+							52       & 55           & 1         & 2       & si   & si        & no           & 6.5        & 9.5           & 4             & 1.178  \\
+							54       & 56           & 1         & 2       & si   & no        & si           & 6.5        & 9.5           & 4             & 1.049  \\
+							42       & 57           & 1         & 2       & si   & no        & no           & 9.5        & 9.5           & 4             & 1.095  \\
+							45       & 58           & 1         & 2       & no   & no        & si           & 9.5        & 9.5           & 4             & 1.058  \\
+							74       & 59           & 0         & 2       & no   & si        & si           & 8          & 8             & 5             & 1.317  \\
+							47       & 60           & 1         & 2       & no   & si        & si           & 9.5        & 9.5           & 6             & 1.156  \\
+							63       & 61           & 1         & 2       & no   & si        & si           & 9.5        & 6.5           & 4             & 2.146  \\
+							77       & 62           & 0         & 2       & si   & si        & no           & 8          & 8             & 5             & 1.27   \\
+							80       & 63           & 0         & 2       & no   & no        & no           & 8          & 8             & 5             & 1.354  \\
+							51       & 64           & 1         & 2       & no   & si        & no           & 6.5        & 9.5           & 6             & 1.194  \\
+							53       & 65           & 1         & 2       & no   & no        & si           & 6.5        & 9.5           & 6             & 1.478  \\
+							61       & 66           & 1         & 2       & no   & no        & si           & 9.5        & 6.5           & 6             & 1.98   \\
+							72       & 67           & 1         & 2       & si   & si        & si           & 6.5        & 6.5           & 4             & 1.131  \\
+							62       & 68           & 1         & 2       & si   & no        & si           & 9.5        & 6.5           & 4             & 1.753  \\
+							59       & 69           & 1         & 2       & no   & si        & no           & 9.5        & 6.5           & 6             & 2.03   \\
+							49       & 70           & 1         & 2       & no   & no        & no           & 6.5        & 9.5           & 4             & 1.223  \\
+							68       & 71           & 1         & 2       & si   & si        & no           & 6.5        & 6.5           & 6             & 0.813  \\
+							73       & 72           & 0         & 2       & si   & si        & si           & 8          & 8             & 5             & 1.256  \\
+							67       & 73           & 1         & 2       & no   & si        & no           & 6.5        & 6.5           & 4             & 1.082  \\
+							71       & 74           & 1         & 2       & no   & si        & si           & 6.5        & 6.5           & 6             & 1.222  \\
+							69       & 75           & 1         & 2       & no   & no        & si           & 6.5        & 6.5           & 4             & 0.94   \\
+							43       & 76           & 1         & 2       & no   & si        & no           & 9.5        & 9.5           & 4             & 1.361  \\
+							65       & 77           & 1         & 2       & no   & no        & no           & 6.5        & 6.5           & 6             & 1.164  \\
+							66       & 78           & 1         & 2       & si   & no        & no           & 6.5        & 6.5           & 4             & 0.912  \\
+							76       & 79           & 0         & 2       & no   & no        & si           & 8          & 8             & 5             & 1.469  \\
+							58       & 80           & 1         & 2       & si   & no        & no           & 9.5        & 6.5           & 6             & 2.023 \\
+							
+						\end{longtable}
+					\end{center}
+				\end{landscape}
+	
 \end{appendices}
 
 
